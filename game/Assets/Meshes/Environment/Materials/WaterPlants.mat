@@ -74,7 +74,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _primaryMotion: 350
-    - _secondaryMotion: 20.7
+    - _secondaryMotion: 0.75
     - primaryMotion: 425
     - secondaryMotion: 3
     m_Colors:
