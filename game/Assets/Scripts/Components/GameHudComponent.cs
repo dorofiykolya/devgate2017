@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace DevGate
 {
-    public class GameUIController : MonoBehaviour
+    public class GameHudComponent : MonoBehaviour
     {
 
         [SerializeField] private Slider _powerSlider;
