@@ -1,41 +1,95 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Utils;
 
 public class Game : MonoBehaviour
 {
-    private Lifetime.Definition _definition;
-    private Signal<float> _onUpdate;
-    private Game _instance;
+    private static Game _instance;
+    private Lifetime.Definition _lifetime;
+    private GameContext _gameContext;
+    private Signal _onUpdate;
+    private Signal _onLateUpdate;
+    private Signal _onFixedUpdate;
+    private Signal _onQuit;
+    private Signal<bool> _onFocus;
+    private Signal<bool> _onPause;
+    private bool _enabled;
+
+    public ISignalSubsribe OnUpdate { get { return _onUpdate; } }
+    public ISignalSubsribe OnLateUpdate { get { return _onLateUpdate; } }
+    public ISignalSubsribe OnFixedUpdate { get { return _onFixedUpdate; } }
+    public ISignalSubsribe OnQuit { get { return _onQuit; } }
+    public ISignalSubsribe<bool> OnFocus { get { return _onFocus; } }
+    public ISignalSubsribe<bool> OnPause { get { return _onPause; } }
+
+    public void Restart()
+    {
+        _lifetime.Terminate();
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        _lifetime = Lifetime.Define(Lifetime.Eternal);
+
+        _onUpdate = new Signal(_lifetime.Lifetime);
+        _onLateUpdate = new Signal(_lifetime.Lifetime);
+        _onFixedUpdate = new Signal(_lifetime.Lifetime);
+        _onQuit = new Signal(_lifetime.Lifetime);
+        _onFocus = new Signal<bool>(_lifetime.Lifetime);
+        _onPause = new Signal<bool>(_lifetime.Lifetime);
+
+        _gameContext = new GameContext(_lifetime.Lifetime, this);
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Awake()
     {
-        _definition = Lifetime.Define(Lifetime.Eternal, "Game");
-        _onUpdate = new Signal<float>(_definition.Lifetime);
-        _instance = this;
+        Initialize();
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        _definition.Terminate();
+        _enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        _enabled = false;
     }
 
     private void Update()
     {
-        _onUpdate.Fire(Time.deltaTime);
+        _onUpdate.Fire();
     }
 
-    public void SubscribeOnUpdate(Lifetime lifetime, Action<float> listener)
+    private void LateUpdate()
     {
-        _onUpdate.Subscribe(lifetime, listener);
+        _onLateUpdate.Fire();
     }
 
-    public Lifetime.Definition SubscribeUpdate(Action<float> listener)
+    private void FixedUpdate()
     {
-        var lifetime = Lifetime.Define(_instance._definition.Lifetime);
-        _instance.SubscribeOnUpdate(lifetime.Lifetime, listener);
-        return lifetime;
+        _onFixedUpdate.Fire();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        _onFocus.Fire(focus);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        _onPause.Fire(pause);
+    }
+
+    private void OnApplicationQuit()
+    {
+        _onQuit.Fire();
+    }
+
+    private void OnDestroy()
+    {
+        _lifetime.Terminate();
     }
 }
