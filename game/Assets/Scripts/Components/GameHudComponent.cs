@@ -17,6 +17,14 @@ namespace DevGate
         [SerializeField]
         private Slider _powerSlider;
 
+        [Space(5)]
+        [SerializeField]
+        private Sprite pauseSprite;
+        [SerializeField]
+        private Sprite playSprite;
+        [SerializeField]
+        private Image playPauseImage;
+
         public void Init()
         {
             GameContext.LevelController.Current.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
@@ -27,10 +35,17 @@ namespace DevGate
         {
             _powerSlider.value = value / 100f;
         }
+
         private void UpdateLevelState(LevelState state)
         {
             _scoreText.text = state.Score.ToString();
             _lifeText.text = state.Life.ToString();
+        }
+
+        public void OnPlayPauseClick()
+        {
+            GameContext.LevelController.Current.State.IsPause = !GameContext.LevelController.Current.State.IsPause;
+            playPauseImage.sprite = GameContext.LevelController.Current.State.IsPause ? playSprite : pauseSprite;
         }
     }
 }

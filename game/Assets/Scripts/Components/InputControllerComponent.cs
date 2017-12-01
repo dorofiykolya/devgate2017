@@ -75,28 +75,26 @@ namespace DevGate
 
         private void ProcessMouse()
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonUp(0))
             {
-                if (Input.GetMouseButtonDown(0) && !_mousePressed)
-                {
-                    _startTouchPosition = Input.mousePosition;
-                    _mousePressed = true;
-                }
-                else if (Input.GetMouseButtonUp(0))
-                {
-                    _onShoot.Fire();
-                    _currentPower = 0;
-                    _horizontalPosition = 0;
-                    _startTouchPosition = Vector2.zero;
-                    _mousePressed = false;
-                }
-                else if (Input.GetMouseButton(0) && _mousePressed)
-                {
-                    _currentPower = _startTouchPosition.y - Input.mousePosition.y;
-                    _horizontalPosition = Input.mousePosition.x - _startTouchPosition.x;
-                    _onPowerChange.Fire(_currentPower);
-                    _onHorizontalChange.Fire(_horizontalPosition);
-                }
+                _onShoot.Fire();
+                _currentPower = 0;
+                _horizontalPosition = 0;
+                _startTouchPosition = Vector2.zero;
+                _mousePressed = false;
+                return;
+            }
+            if (Input.GetMouseButtonDown(0) && !_mousePressed)
+            {
+                _startTouchPosition = Input.mousePosition;
+                _mousePressed = true;
+            }
+            else if (Input.GetMouseButton(0) && _mousePressed)
+            {
+                _currentPower = _startTouchPosition.y - Input.mousePosition.y;
+                _horizontalPosition = Input.mousePosition.x - _startTouchPosition.x;
+                _onPowerChange.Fire(_currentPower);
+                _onHorizontalChange.Fire(_horizontalPosition);
             }
         }
 

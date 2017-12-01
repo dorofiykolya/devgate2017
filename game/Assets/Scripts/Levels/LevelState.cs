@@ -10,10 +10,13 @@ namespace DevGate
     {
         private int _life;
         private int _score;
+        private bool _isPause = false;
 
         public int Life { get { return _life; } }
 
         public int Score { get { return _score; } }
+
+        public bool IsPause { get { return _isPause; } set { _isPause = value; _onStateChanged.Fire(this); } }
 
         private Signal<LevelState> _onStateChanged;
 
