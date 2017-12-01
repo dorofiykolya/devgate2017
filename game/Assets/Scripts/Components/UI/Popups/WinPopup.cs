@@ -12,16 +12,33 @@ namespace DevGate
         private Text _scoreText;
 
 
-        public override void Init()
+        public static void ShowPopup()
         {
+            var go = Resources.Load<GameObject>("Prefabs/Popups/WinPopup");
+            Instantiate<GameObject>(go);
+        }
+
+        void Awake()
+        {
+            OnAwake();
+            _scoreText.text = GameContext.LevelController.Current.State.Score.ToString();
+        }
+
+        private void Start()
+        {
+            Show();
         }
 
         public void OnReplayClick()
         {
+            //TODO
+            Hide();
         }
 
         public void OnNextClick()
         {
+            //TODO
+            Hide();
         }
     }
 }

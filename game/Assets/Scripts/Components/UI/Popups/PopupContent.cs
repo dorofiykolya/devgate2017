@@ -9,26 +9,32 @@ namespace DevGate
     {
 
         [SerializeField]
-        private Image lockImage;
+        protected Image lockImage;
 
         [SerializeField]
-        private GameObject popupObject;
+        protected GameObject popupObject;
 
-        void Awake()
+
+        protected void OnAwake()
         {
-            
+            SetVisible(false, 0f);
         }
 
-        public virtual void Init()
+        protected virtual void Show()
         {
-        }
-
-        public virtual void Show()
-        {
+            SetVisible(true, 0.3f);
         }
 
         public virtual void Hide()
         {
+            SetVisible(false, 0.3f);
+            Destroy(gameObject, 0.3f);
+        }
+
+        private void SetVisible(bool visible, float time)
+        {
+            foreach (Graphic item in GetComponentsInChildren<Graphic>())
+                item.CrossFadeAlpha(visible ? 1 : 0, time, true);
         }
     }
 }
