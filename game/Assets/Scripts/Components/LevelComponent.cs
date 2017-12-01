@@ -11,10 +11,14 @@ namespace DevGate
         public Camera Camera;
         public Animator StartLevelAnimator;
         public LevelSettingsScriptableObject Settings;
+        public InputControllerComponent InputController;
 
         public void StartLevel()
         {
             StartLevelAnimator.SetTrigger("Start");
+
+            InputController = new InputControllerComponent();
+            InputController.Init();
         }
     }
 }
