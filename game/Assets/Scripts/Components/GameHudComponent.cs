@@ -11,12 +11,15 @@ namespace DevGate
 
         [SerializeField] private Slider _powerSlider;
 
-        [SerializeField] private InputControllerComponent _inputController;
-
-
-        void Update()
+        
+        public void Init(LevelComponent level)
         {
-            _powerSlider.value = _inputController.CurrentPower / 100f;
+            level.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
+        }
+
+        private void UpdatePower(float value)
+        {
+            _powerSlider.value = value / 100f;
         }
     }
 }

@@ -30,21 +30,21 @@ namespace DevGate
 
         private bool _mousePressed = false;
 
-        public void Init(Lifetime lifetime)
+        public void Init()
         {
-            _onShoot = new Signal(lifetime);
-            _onPowerChange = new Signal<float>(lifetime);
-            _onHorizontalChange = new Signal<float>(lifetime);
+            Game.Instance.OnUpdate.Subscribe(GameContext.Lifetime, OnUpdate);
+            _onShoot = new Signal(GameContext.Lifetime);
+            _onPowerChange = new Signal<float>(GameContext.Lifetime);
+            _onHorizontalChange = new Signal<float>(GameContext.Lifetime);
         }
 
-        void Update()
+        void OnUpdate()
         {
 #if UNITY_EDITOR
             ProcessMouse();
 #else
             ProcessTouches();
 #endif
-
         }
 
         private void ProcessTouches()
@@ -103,6 +103,16 @@ namespace DevGate
         public void SubscribeOnShoot(Lifetime lifetime, Action callback)
         {
             _onShoot.Subscribe(lifetime, callback);
+        }
+
+        public void SubscribeOnPowerChange(Lifetime lifetime, Action<float> callback)
+        {
+            _onPowerChange.Subscribe(lifetime, callback);
+        }
+
+        public void SubscribeOnHorizontalCHange(Lifetime lifetime, Action<float> callback)
+        {
+            _onHorizontalChange.Subscribe(lifetime, callback);
         }
     }
 }

@@ -3,7 +3,7 @@ using Utils;
 
 public class Game : MonoBehaviour
 {
-    private static Game _instance;
+    public static Game Instance { get; private set; }
     private Lifetime.Definition _lifetime;
     private GameContext _gameContext;
     private Signal _onUpdate;
@@ -46,6 +46,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         Initialize();
     }
 
