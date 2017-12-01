@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.2249135, g: 0.35755473, b: 0.39215684, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.003
-  m_LinearFogStart: 190.02
-  m_LinearFogEnd: 363.8
+  m_LinearFogStart: 139.3
+  m_LinearFogEnd: 282.75
   m_AmbientSkyColor: {r: 0.5735294, g: 0.8058823, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -224,15 +224,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.98513937
+      value: -0.9945219
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.17175719
+      value: 0.10452846
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 19.78
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
