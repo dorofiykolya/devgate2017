@@ -11,7 +11,8 @@ public class GameContext
     private Game _game;
     private Lifetime _lifetime;
     private GameSceneManager _sceneManager;
-    private GameController _controller;
+    private GameController _gameController;
+    private GameLevelController _levelController;
 
     public GameContext(Lifetime lifetime, Game game)
     {
@@ -20,10 +21,12 @@ public class GameContext
         _game = game;
 
         _sceneManager = new GameSceneManager();
-        _controller = new GameController();
+        _gameController = new GameController();
+        _levelController = new GameLevelController();
     }
 
-    public static GameController Controller { get { return _instance._controller; } }
+    public static GameLevelController LevelController { get { return _instance._levelController; } }
+    public static GameController GameController { get { return _instance._gameController; } }
     public static Lifetime Lifetime { get { return _instance._lifetime; } }
     public static GameSceneManager SceneManager { get { return _instance._sceneManager; } }
     public static Transform RooTransform { get { return _instance._game.transform; } }

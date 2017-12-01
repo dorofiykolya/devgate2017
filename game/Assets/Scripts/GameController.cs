@@ -9,7 +9,7 @@ namespace DevGate
     {
         public void Start()
         {
-            GameContext.SceneManager.Load(Scenes.Level_01);
+            GameContext.LevelController.LoadLevel(0);
         }
     }
 }
