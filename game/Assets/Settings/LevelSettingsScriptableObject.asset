@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2343342f748bc488021e50c6ec907b, type: 3}
   m_Name: LevelSettingsScriptableObject
   m_EditorClassIdentifier: 
+  SpawnComponents:
+  - {fileID: 114266182623550144, guid: 92e95fd09301a824ba5c8db84c312337, type: 2}

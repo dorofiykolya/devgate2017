@@ -6,9 +6,8 @@ using UnityEngine;
 
 namespace DevGate
 {
-    public class BoatControllerComponent : MonoBehaviour
+    public class LevelEnvironmentComponent : MonoBehaviour
     {
-        public Transform Left;
-        public Transform Right;
+        public MeshFilter Mesh;
     }
 }

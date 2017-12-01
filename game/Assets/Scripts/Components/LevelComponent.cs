@@ -10,6 +10,7 @@ namespace DevGate
     public class LevelComponent : MonoBehaviour
     {
         private Lifetime.Definition _definition;
+        private Transform _poolTransform;
 
         public Camera Camera;
         public Animator StartLevelAnimator;
@@ -18,7 +19,9 @@ namespace DevGate
         public GameHudComponent HudComponent;
         public LevelState State;
         public SpawnController Spawn;
-        public Transform Environment;
+        public LevelEnvironmentComponent Environment;
+        public ShootController ShootController;
+        public BoatControllerComponent BoatController;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
 
@@ -29,11 +32,19 @@ namespace DevGate
             StartLevelAnimator.SetTrigger("Start");
         }
 
+        public void ToPool(Transform value)
+        {
+            value.SetParent(_poolTransform);
+        }
+
         private void Awake()
         {
             if (!GameContext.Initialized) return;
 
             _definition = Lifetime.Define(GameContext.LevelController.LeveLifetime);
+
+            _poolTransform = new GameObject("Pool").transform;
+            transform.SetParent(_poolTransform);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
@@ -42,6 +53,8 @@ namespace DevGate
 
             Spawn = new SpawnController(this, Settings);
             Spawn.Init();
+
+            ShootController = new ShootController(this);
         }
 
         private void OnDestroy()

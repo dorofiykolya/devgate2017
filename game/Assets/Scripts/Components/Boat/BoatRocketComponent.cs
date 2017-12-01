@@ -6,9 +6,7 @@ using UnityEngine;
 
 namespace DevGate
 {
-    public class BoatControllerComponent : MonoBehaviour
+    public class BoatRocketComponent : MonoBehaviour
     {
-        public Transform Left;
-        public Transform Right;
     }
 }
