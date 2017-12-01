@@ -48,6 +48,7 @@ namespace DevGate
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
+            HudComponent.Init(this, Lifetime);
             State = new LevelState();
             State.Init(Lifetime);
 
