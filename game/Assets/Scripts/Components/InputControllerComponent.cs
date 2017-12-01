@@ -82,6 +82,14 @@ namespace DevGate
                     _startTouchPosition = Input.mousePosition;
                     _mousePressed = true;
                 }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    _onShoot.Fire();
+                    _currentPower = 0;
+                    _horizontalPosition = 0;
+                    _startTouchPosition = Vector2.zero;
+                    _mousePressed = false;
+                }
                 else if (Input.GetMouseButton(0) && _mousePressed)
                 {
                     _currentPower = _startTouchPosition.y - Input.mousePosition.y;
@@ -89,14 +97,6 @@ namespace DevGate
                     _onPowerChange.Fire(_currentPower);
                     _onHorizontalChange.Fire(_horizontalPosition);
                 }
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                _onShoot.Fire();
-                _currentPower = 0;
-                _horizontalPosition = 0;
-                _startTouchPosition = Vector2.zero;
-                _mousePressed = false;
             }
         }
 
