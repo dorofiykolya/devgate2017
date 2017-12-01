@@ -39,7 +39,7 @@ public class Game : MonoBehaviour
         _onPause = new Signal<bool>(_lifetime.Lifetime);
 
         _gameContext = new GameContext(_lifetime.Lifetime, this);
-
+        GameContext.Controller.Start();
         DontDestroyOnLoad(gameObject);
     }
 
