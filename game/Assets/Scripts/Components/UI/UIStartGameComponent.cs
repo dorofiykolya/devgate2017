@@ -13,9 +13,9 @@ namespace DevGate
             
         }
 
-        private void StartLevel()
+        public void StartLevel()
         {
-
+            GetComponent<LevelComponent>().StartLevel();
         }
     }
 }

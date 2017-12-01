@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DevGate;
 using UnityEngine;
 using Utils;
@@ -26,6 +27,18 @@ public class GameContext
     public static Lifetime Lifetime { get { return _instance._lifetime; } }
     public static GameSceneManager SceneManager { get { return _instance._sceneManager; } }
     public static Transform RooTransform { get { return _instance._game.transform; } }
+
+    public static void SubscribeOnUpdate(Lifetime lifetime, Action listener)
+    {
+        _instance._game.OnUpdate.Subscribe(lifetime, listener);
+    }
+
+    public static Lifetime.Definition SubscribeOnUpdate(Action listener)
+    {
+        var def = Lifetime.Define(Lifetime);
+        SubscribeOnUpdate(def.Lifetime, listener);
+        return def;
+    }
 
     public static void StartCoroutine(Lifetime lifetime, IEnumerator enumerator)
     {
