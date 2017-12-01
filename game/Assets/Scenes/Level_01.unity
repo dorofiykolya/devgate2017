@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 506678226}
   - component: {fileID: 506678225}
   - component: {fileID: 506678224}
+  - component: {fileID: 506678227}
   m_Layer: 0
   m_Name: UICanvas
   m_TagString: Untagged
@@ -265,6 +266,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &506678227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506678222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdb053c6bad86a47976539b5a058d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &618671839
 GameObject:
   m_ObjectHideFlags: 0
