@@ -6,7 +6,7 @@ using Utils;
 
 namespace DevGate
 {
-    public class InputControllerComponent : MonoBehaviour
+    public class InputControllerComponent
     {
 
         private float _currentPower = 0;
@@ -25,12 +25,16 @@ namespace DevGate
         private Vector2 _startTouchPosition = Vector2.zero;
 
         private Signal _onShoot;
+        private Signal<float> _onPowerChange;
+        private Signal<float> _onHorizontalChange;
 
         private bool _mousePressed = false;
 
-        private void Awake()
+        public void Init(Lifetime lifetime)
         {
-            Input.simulateMouseWithTouches = true;
+            _onShoot = new Signal(lifetime);
+            _onPowerChange = new Signal<float>(lifetime);
+            _onHorizontalChange = new Signal<float>(lifetime);
         }
 
         void Update()
@@ -56,6 +60,8 @@ namespace DevGate
                 {
                     _currentPower = _startTouchPosition.y - touch.position.y;
                     _horizontalPosition = touch.position.x - _startTouchPosition.x;
+                    _onPowerChange.Fire(_currentPower);
+                    _onHorizontalChange.Fire(_horizontalPosition);
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
@@ -71,7 +77,6 @@ namespace DevGate
         {
             if (Input.GetMouseButton(0))
             {
-
                 if (Input.GetMouseButtonDown(0) && !_mousePressed)
                 {
                     _startTouchPosition = Input.mousePosition;
@@ -81,12 +86,13 @@ namespace DevGate
                 {
                     _currentPower = _startTouchPosition.y - Input.mousePosition.y;
                     _horizontalPosition = Input.mousePosition.x - _startTouchPosition.x;
+                    _onPowerChange.Fire(_currentPower);
+                    _onHorizontalChange.Fire(_horizontalPosition);
                 }
-
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                //_onShoot.Fire();
+                _onShoot.Fire();
                 _currentPower = 0;
                 _horizontalPosition = 0;
                 _startTouchPosition = Vector2.zero;
