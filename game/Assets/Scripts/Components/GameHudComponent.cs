@@ -18,9 +18,9 @@ namespace DevGate
         private Slider _powerSlider;
 
 
-        public void Init(LevelComponent level)
+        public void Init()
         {
-            level.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
+            GameContext.LevelController.Current.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
         }
 
         private void UpdatePower(float value)

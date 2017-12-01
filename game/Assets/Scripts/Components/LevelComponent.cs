@@ -12,6 +12,8 @@ namespace DevGate
         public Animator StartLevelAnimator;
         public LevelSettingsScriptableObject Settings;
         public InputControllerComponent InputController;
+        public GameHudComponent HudComponent;
+        public LevelState State;
 
         public void StartLevel()
         {
@@ -19,6 +21,9 @@ namespace DevGate
 
             InputController = new InputControllerComponent();
             InputController.Init();
+            State = new LevelState();
+            State.Init(GameContext.Lifetime);
+            HudComponent.Init();
         }
     }
 }
