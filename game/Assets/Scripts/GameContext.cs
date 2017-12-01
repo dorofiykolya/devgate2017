@@ -25,11 +25,13 @@ public class GameContext
         _levelController = new GameLevelController();
     }
 
+    public static bool Initialized { get { return _instance != null; } }
+
     public static GameLevelController LevelController { get { return _instance._levelController; } }
     public static GameController GameController { get { return _instance._gameController; } }
     public static Lifetime Lifetime { get { return _instance._lifetime; } }
     public static GameSceneManager SceneManager { get { return _instance._sceneManager; } }
-    public static Transform RooTransform { get { return _instance._game.transform; } }
+    public static Transform RooTransform { get { return _instance != null? _instance._game.transform : null; } }
 
     public static void SubscribeOnUpdate(Lifetime lifetime, Action listener)
     {

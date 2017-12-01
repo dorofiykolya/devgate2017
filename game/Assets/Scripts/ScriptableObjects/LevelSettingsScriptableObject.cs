@@ -8,5 +8,6 @@ namespace DevGate
 {
     public class LevelSettingsScriptableObject : ScriptableObject
     {
+        public SpawnComponent[] SpawnComponents;
     }
 }

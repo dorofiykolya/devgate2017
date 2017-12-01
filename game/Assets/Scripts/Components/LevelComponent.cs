@@ -18,6 +18,7 @@ namespace DevGate
         public GameHudComponent HudComponent;
         public LevelState State;
         public SpawnController Spawn;
+        public Transform Environment;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
 
@@ -30,6 +31,8 @@ namespace DevGate
 
         private void Awake()
         {
+            if (!GameContext.Initialized) return;
+
             _definition = Lifetime.Define(GameContext.LevelController.LeveLifetime);
 
             InputController = new InputControllerComponent();
@@ -43,7 +46,8 @@ namespace DevGate
 
         private void OnDestroy()
         {
-            _definition.Terminate();
+            if (_definition != null)
+                _definition.Terminate();
         }
     }
 }

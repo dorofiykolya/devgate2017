@@ -47,8 +47,7 @@
 			{
 				fixed4 normalTex = tex2D(_NormalTex, i.uv + _Time.rr);
 				fixed4 col = tex2D(_MainTex, i.uv + normalTex.rg * _Effect);
-				// just invert the colors
-				col = 1 - col;
+				
 				return col;
 			}
 			ENDCG
