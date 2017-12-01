@@ -17,23 +17,20 @@ namespace DevGate
         [SerializeField]
         private Slider _powerSlider;
 
-
         public void Init()
         {
             GameContext.LevelController.Current.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
+            GameContext.LevelController.Current.State.SubscribeOnStateChanged(GameContext.Lifetime, UpdateLevelState);
         }
 
         private void UpdatePower(float value)
         {
             _powerSlider.value = value / 100f;
         }
-        private void UpdateScores(int value)
+        private void UpdateLevelState(LevelState state)
         {
-            _scoreText.text = value.ToString();
-        }
-        private void UpdateLife(int value)
-        {
-            _lifeText.text = value.ToString();
+            _scoreText.text = state.Score.ToString();
+            _lifeText.text = state.Life.ToString();
         }
     }
 }

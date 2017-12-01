@@ -23,6 +23,11 @@ namespace DevGate
             ResetLevelState();
         }
 
+        public void SubscribeOnStateChanged(Lifetime lifetime, Action<LevelState> callback)
+        {
+            _onStateChanged.Subscribe(lifetime, callback);
+        }
+
         public void UpdateLife(int delta)
         {
             _life += delta;
