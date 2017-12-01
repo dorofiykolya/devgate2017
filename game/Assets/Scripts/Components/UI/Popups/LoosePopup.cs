@@ -10,5 +10,9 @@ namespace DevGate
         public override void Init()
         {
         }
+
+        public void OnReplayClick()
+        {
+        }
     }
 }
