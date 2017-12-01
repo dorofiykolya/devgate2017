@@ -30,12 +30,12 @@ namespace DevGate
 
         private bool _mousePressed = false;
 
-        public void Init()
+        public void Init(Lifetime lifetime)
         {
-            Game.Instance.OnUpdate.Subscribe(GameContext.Lifetime, OnUpdate);
-            _onShoot = new Signal(GameContext.Lifetime);
-            _onPowerChange = new Signal<float>(GameContext.Lifetime);
-            _onHorizontalChange = new Signal<float>(GameContext.Lifetime);
+            Game.Instance.OnUpdate.Subscribe(lifetime, OnUpdate);
+            _onShoot = new Signal(lifetime);
+            _onPowerChange = new Signal<float>(lifetime);
+            _onHorizontalChange = new Signal<float>(lifetime);
         }
 
         void OnUpdate()

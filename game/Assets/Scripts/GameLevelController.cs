@@ -5,6 +5,7 @@ namespace DevGate
     public class GameLevelController
     {
         public LevelComponent Current;
+        public Lifetime LeveLifetime;
 
         public Lifetime.Definition LoadLevel(Scenes levelId)
         {
@@ -12,6 +13,7 @@ namespace DevGate
             {
                 Current = component;
             });
+            LeveLifetime = def.Lifetime;
             def.Lifetime.AddAction(() =>
             {
                 Current = null;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DevGate;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 namespace DevGate
 {
@@ -25,10 +26,10 @@ namespace DevGate
         [SerializeField]
         private Image playPauseImage;
 
-        public void Init()
+        public void Init(LevelComponent level, Lifetime lifetime)
         {
-            GameContext.LevelController.Current.InputController.SubscribeOnPowerChange(GameContext.Lifetime, UpdatePower);
-            GameContext.LevelController.Current.State.SubscribeOnStateChanged(GameContext.Lifetime, UpdateLevelState);
+            level.InputController.SubscribeOnPowerChange(lifetime, UpdatePower);
+            level.State.SubscribeOnStateChanged(lifetime, UpdateLevelState);
         }
 
         private void UpdatePower(float value)
