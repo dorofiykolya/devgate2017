@@ -86,7 +86,7 @@ Shader "Environment/WaterPlants"
 			fixed4 frag(VertexOutput i) : COLOR 
             {
                 fixed4 col = lerp(_Color_01, _Color_02, i.uv.z + i.uv.w);
-                fixed shade = i.color.g;
+                fixed shade = saturate(i.color.g + .5);
                 fixed4 final = col * shade;
                 UNITY_APPLY_FOG(i.fogCoord, final);
                 
