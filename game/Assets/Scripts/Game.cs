@@ -12,7 +12,8 @@ public class Game : MonoBehaviour
     private Signal _onQuit;
     private Signal<bool> _onFocus;
     private Signal<bool> _onPause;
-    private bool _enabled;
+
+    public bool Enabled { get; private set; }
 
     public ISignalSubsribe OnUpdate { get { return _onUpdate; } }
     public ISignalSubsribe OnLateUpdate { get { return _onLateUpdate; } }
@@ -50,12 +51,12 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {
-        _enabled = true;
+        Enabled = true;
     }
 
     private void OnDisable()
     {
-        _enabled = false;
+        Enabled = false;
     }
 
     private void Update()
