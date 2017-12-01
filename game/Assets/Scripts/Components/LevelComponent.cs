@@ -10,16 +10,11 @@ namespace DevGate
     {
         public Camera Camera;
         public Animator StartLevelAnimator;
-        [HideInInspector]
-        public InputControllerComponent InputController;
-        public GameHudComponent HudComponent;
+        public LevelSettingsScriptableObject Settings;
 
         public void StartLevel()
         {
             StartLevelAnimator.SetTrigger("Start");
-            InputController = new InputControllerComponent();
-            InputController.Init();
-            HudComponent.Init(this);
         }
     }
 }
