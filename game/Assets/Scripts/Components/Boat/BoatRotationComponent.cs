@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatRotationComponent : MonoBehaviour
 {
-    private float speed = 1f;
+    private float speed = 4f;
     private Vector3 targetRotation = Vector3.zero;
 
     void Start()
@@ -16,7 +16,7 @@ public class BoatRotationComponent : MonoBehaviour
     {
         if (phase == TouchPhase.Moved && deltaX != 0)
         {
-
+            targetRotation = deltaX > 0 ? new Vector3(0, 0, 20) : new Vector3(0, 0, -20);
         }
         else
             targetRotation = Vector3.zero;
@@ -24,10 +24,8 @@ public class BoatRotationComponent : MonoBehaviour
 
     private void Update()
     {
-//         if(Input)
-//         var r = transform.localEulerAngles;
-//         r.y = Mathf.LerpAngle(r.y, 0, speed * Time.deltaTime);
-//         transform.localEulerAngles = r;
-//         resetRotation = Mathf.Abs(r.y) > 0.02f;
+        var r = transform.localEulerAngles;
+        r.z = Mathf.LerpAngle(r.z, targetRotation.z, (targetRotation.z == 0 ? 2 : 1f) * speed * Time.deltaTime);
+        transform.localEulerAngles = r;
     }
 }
