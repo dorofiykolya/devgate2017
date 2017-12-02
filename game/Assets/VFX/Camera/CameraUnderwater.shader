@@ -4,7 +4,9 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_NormalTex("Normal", 2D) = "white" {}
+		_Sphere("Sphere", 2D) = "white" {}
 		_Effect("Effect", Float) = 1
+		_SphereEffect("SphereEffect", Range(0, 1)) = 1 
 	}
 	SubShader
 	{
@@ -41,12 +43,15 @@
 			
 			sampler2D _MainTex;
 			sampler2D _NormalTex;
+			sampler2D _Sphere;
 			float _Effect;
+			float _SphereEffect;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 normalTex = tex2D(_NormalTex, i.uv + _Time.rr);
-				fixed4 col = tex2D(_MainTex, i.uv + normalTex.rg * _Effect);
+				fixed4 sphereTex = tex2D(_Sphere, i.uv);
+				fixed4 col = tex2D(_MainTex, normalTex.rg * _Effect + lerp(sphereTex.rg, i.uv, _SphereEffect));
 				
 				return col;
 			}
