@@ -28,6 +28,7 @@ namespace DevGate
         public CameraShakeComponent ShakeComponent;
         public RuneRequirementController RuneRequirementController;
 
+
         public Transform[] RunesPositions;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
