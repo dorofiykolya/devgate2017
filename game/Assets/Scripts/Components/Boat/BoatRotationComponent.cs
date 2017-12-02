@@ -4,36 +4,30 @@ using UnityEngine;
 
 public class BoatRotationComponent : MonoBehaviour
 {
-    private bool resetRotation = false;
-    private Vector3 targetRotation;
-    private float speed = 2f;
+    private float speed = 1f;
+    private Vector3 targetRotation = Vector3.zero;
 
     void Start()
     {
-        //GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, SetHorizontalPosition);
-        //GameContext.LevelController.Current.InputController.SubscribeOnShoot(GameContext.Lifetime,  ResetRotation);
+        GameContext.LevelController.Current.InputController.SubscribeOnTouchProcess(GameContext.Lifetime, SetTargetAngle);
     }
 
-    private void SetHorizontalPosition(float value)
+    private void SetTargetAngle(TouchPhase phase, float deltaX)
     {
-        Vector3 r = transform.localEulerAngles;
-        r.y = value;
-        transform.localEulerAngles = r;
-    }
+        if (phase == TouchPhase.Moved && deltaX != 0)
+        {
 
-    private void ResetRotation()
-    {
-        targetRotation = transform.localEulerAngles;
-        targetRotation.y = 0;
-        resetRotation = true;
+        }
+        else
+            targetRotation = Vector3.zero;
     }
 
     private void Update()
     {
-        if (!resetRotation) return;
-        var r = transform.localEulerAngles;
-        r.y = Mathf.LerpAngle(r.y, 0, speed * Time.deltaTime);
-        transform.localEulerAngles = r;
-        resetRotation = Mathf.Abs(r.y) > 0.02f;
+//         if(Input)
+//         var r = transform.localEulerAngles;
+//         r.y = Mathf.LerpAngle(r.y, 0, speed * Time.deltaTime);
+//         transform.localEulerAngles = r;
+//         resetRotation = Mathf.Abs(r.y) > 0.02f;
     }
 }
