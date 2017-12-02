@@ -8,15 +8,11 @@ namespace DevGate
 {
     public class BoatRocketComponent : MonoBehaviour
     {
-        float speed = 10;
+        float speed = 20;
 
-        void Awake()
+        public void Go()
         {
             GameContext.SubscribeOnUpdate(GameContext.Lifetime, OnUpdate);
-        }
-
-        private void Start()
-        {
             transform.SetParent(null);
         }
 
@@ -30,6 +26,18 @@ namespace DevGate
             var target = collider.gameObject.GetComponent<SpawnComponent>();
             if (target != null)
             {
+                Debug.LogWarning("Bingo");
+                GameContext.LevelController.Current.State.UpdateScore(target.RewardScore);
+                //TODO
+            }
+        }
+
+        public void OnTriggerStay(Collider collider)
+        {
+            var target = collider.gameObject.GetComponent<SpawnComponent>();
+            if (target != null)
+            {
+                Debug.LogWarning("Bingo");
                 GameContext.LevelController.Current.State.UpdateScore(target.RewardScore);
                 //TODO
             }
