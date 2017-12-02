@@ -70,7 +70,7 @@ Shader "Environment/Rocks"
                 float3 dir = normalize(float3(0, -1, -.5));
                 float4 d = dot(i.normal, dir);
                 float4 col = lerp(_Color_01, _Color_02, d);
-                fixed4 final = saturate(col + .3 * caustics_01 * caustics_02);
+                fixed4 final = saturate(col + .15 * caustics_01 * caustics_02);
                 UNITY_APPLY_FOG(i.fogCoord, final);
                 
                 return final;

@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.18811767, g: 0.31708917, b: 0.328, a: 1}
+  m_FogColor: {r: 0.22833624, g: 0.328, b: 0.18811767, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.003
   m_LinearFogStart: 139.3
@@ -290,15 +290,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.002280287
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.9945219
+      value: -0.9942852
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.10452846
+      value: 0.10450358
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -306,11 +306,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.021695483
       objectReference: {fileID: 0}
     - target: {fileID: 4293453691328618, guid: 4ebdb392cf2f902448b0faaf0735590d, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -177.5
       objectReference: {fileID: 0}
     - target: {fileID: 114888256386683108, guid: 4ebdb392cf2f902448b0faaf0735590d,
         type: 2}
@@ -417,17 +417,17 @@ Prefab:
     - target: {fileID: 20481507733117906, guid: 4ebdb392cf2f902448b0faaf0735590d,
         type: 2}
       propertyPath: m_BackGroundColor.r
-      value: 0.18811767
+      value: 0.22833624
       objectReference: {fileID: 0}
     - target: {fileID: 20481507733117906, guid: 4ebdb392cf2f902448b0faaf0735590d,
         type: 2}
       propertyPath: m_BackGroundColor.g
-      value: 0.31708917
+      value: 0.328
       objectReference: {fileID: 0}
     - target: {fileID: 20481507733117906, guid: 4ebdb392cf2f902448b0faaf0735590d,
         type: 2}
       propertyPath: m_BackGroundColor.b
-      value: 0.328
+      value: 0.18811767
       objectReference: {fileID: 0}
     - target: {fileID: 20481507733117906, guid: 4ebdb392cf2f902448b0faaf0735590d,
         type: 2}
@@ -627,7 +627,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 662020829
+  randomSeed: -1010303156
   InitialModule:
     serializedVersion: 3
     enabled: 1
