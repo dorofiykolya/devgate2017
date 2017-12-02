@@ -44,8 +44,7 @@ namespace DevGate
 
         public void OnNextClick()
         {
-            //TODO
-            Hide();
+            StartCoroutine(WaitAndRestart());
         }
     }
 }
