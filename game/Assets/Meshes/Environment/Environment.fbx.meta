@@ -30,6 +30,7 @@ ModelImporter:
     2300008: Pipes
     2300010: Rays
     2300012: Grass
+    2300014: WaterPlants
     3300000: Bottom
     3300002: SpawnPoints
     3300004: WaterPlants_MeshPart0
@@ -37,6 +38,7 @@ ModelImporter:
     3300008: Pipes
     3300010: Rays
     3300012: Grass
+    3300014: WaterPlants
     4300000: Bottom
     4300002: WaterPlants_MeshPart0
     4300004: WaterPlants_MeshPart1
@@ -44,6 +46,7 @@ ModelImporter:
     4300008: Pipes
     4300010: Rays
     4300012: Grass
+    4300014: WaterPlants
   externalObjects:
   - first:
       type: UnityEngine:Material
