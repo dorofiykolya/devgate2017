@@ -46,6 +46,10 @@ namespace DevGate
         {
             _score += delta;
             _onStateChanged.Fire(this);
+            if (_score >= GameContext.LevelController.Current.Settings.ScoreForFirstLevel)
+            {
+                WinPopup.ShowPopup();
+            }
         }
 
         public void ResetLevelState()

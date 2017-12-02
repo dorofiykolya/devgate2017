@@ -22,5 +22,6 @@ namespace DevGate
         public float BulletMinZ = 0;
         public float RocketSpeed = 20f;
         public float ShootDelay = 2f;
+        public int ScoreForFirstLevel = 100;
     }
 }
