@@ -19,6 +19,8 @@ MonoBehaviour:
     type: 2}
   ExplosionEffectPrefab: {fileID: 114420451111830722, guid: f05095f2a07c370498dfb280ebef60ea,
     type: 2}
+  SpawnEffectPrefab: {fileID: 114028888109282084, guid: 4d5f49df426e22c4a83c60e1273b95ae,
+    type: 2}
   MaxHorizontalAngle: 0
   ScreenDragCoeff: 60
   DelaySpawn: 2

@@ -139,6 +139,8 @@ namespace DevGate
                 var point = _spawnPoints[_random.Next(_spawnPoints.Count)];
                 spawn.transform.position = point;
 
+                _levelComponent.SpawnEffectController.Explosion(point);
+
                 var active = new ActiveSpawn
                 {
                     Spawn = spawn,

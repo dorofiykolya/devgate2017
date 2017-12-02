@@ -12,10 +12,10 @@ namespace DevGate
         private readonly LevelComponent _level;
         private readonly PoolFactory<ExplosionEffectComponent> _factory;
 
-        public ExplosionController(LevelComponent level)
+        public ExplosionController(LevelComponent level, ExplosionEffectComponent prefab)
         {
             _level = level;
-            _factory = new PoolFactory<ExplosionEffectComponent>(() => GameObject.Instantiate(level.Settings.ExplosionEffectPrefab));
+            _factory = new PoolFactory<ExplosionEffectComponent>(() => GameObject.Instantiate(prefab));
             var instances = ListPool<ExplosionEffectComponent>.Pop();
             for (int i = 0; i < 5; i++)
             {
@@ -23,6 +23,7 @@ namespace DevGate
             }
             foreach (var instance in instances)
             {
+                _level.ToPool(instance.transform);
                 _factory.Push(instance);
             }
             ListPool.Push(instances);
@@ -34,7 +35,7 @@ namespace DevGate
             var exp = _factory.Pop();
             exp.transform.SetParent(_level.EffectTransform, false);
             exp.transform.position = position;
-            GameContext.DelayCall(def.Lifetime, 2f, exp.FireOnComplete);
+            GameContext.DelayCall(def.Lifetime, 1.5f, exp.FireOnComplete);
             exp.Play();
             def.Lifetime.AddAction(() =>
             {

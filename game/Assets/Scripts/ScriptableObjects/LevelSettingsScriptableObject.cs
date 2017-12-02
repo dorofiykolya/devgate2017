@@ -12,6 +12,7 @@ namespace DevGate
         public BoatRocketComponent[] Rockets;
         public GoatSpawnComponent GoatSpawnComponent;
         public ExplosionEffectComponent ExplosionEffectPrefab;
+        public ExplosionEffectComponent SpawnEffectPrefab;
         public float MaxHorizontalAngle;
         public float ScreenDragCoeff;
         public float DelaySpawn = 2f;

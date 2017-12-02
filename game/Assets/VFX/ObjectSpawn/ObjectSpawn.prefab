@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4748271250262730}
   - component: {fileID: 198714683045447136}
   - component: {fileID: 199753929798295156}
+  - component: {fileID: 114028888109282084}
   m_Layer: 0
   m_Name: ObjectSpawn
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114028888109282084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067575124780586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5993514f0f57d7949a75566dc0b1c78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198714683045447136
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -51,7 +63,7 @@ ParticleSystem:
   lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -108,8 +120,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -747,7 +759,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 10
         minScalar: 0
         maxCurve:
           serializedVersion: 2

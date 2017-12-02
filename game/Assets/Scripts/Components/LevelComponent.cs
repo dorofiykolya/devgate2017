@@ -30,7 +30,7 @@ namespace DevGate
         public CameraShakeComponent ShakeComponent;
         public RuneRequirementController RuneRequirementController;
         public ExplosionController ExplosionController;
-
+        public ExplosionController SpawnEffectController;
 
         public Transform[] RunesPositions;
 
@@ -95,7 +95,8 @@ namespace DevGate
             ShootController = new ShootController(this);
 
             RuneRequirementController = new RuneRequirementController(this);
-            ExplosionController = new ExplosionController(this);
+            ExplosionController = new ExplosionController(this, Settings.ExplosionEffectPrefab);
+            SpawnEffectController = new ExplosionController(this, Settings.SpawnEffectPrefab);
 
             GameContext.DelayCall(1f, StartLevel);
         }
