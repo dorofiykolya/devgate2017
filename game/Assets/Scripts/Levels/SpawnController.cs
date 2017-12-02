@@ -75,8 +75,9 @@ namespace DevGate
                         {
                             activeSpawn.Spawn.SubscribeOnPlayDestroyComplete(_levelComponent.Lifetime, () =>
                             {
-                                _activeSpawns.Remove(activeSpawn);
+                                //_activeSpawns.Remove(activeSpawn);
                                 activeSpawn.BlockRemove = false;
+                                activeSpawn.Lifetime.Terminate();
                             });
                             _levelComponent.ExplosionController.Explosion(activeSpawn.Spawn.transform.position);
                             activeSpawn.BlockRemove = true;

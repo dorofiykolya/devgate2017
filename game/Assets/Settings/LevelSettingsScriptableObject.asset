@@ -28,7 +28,7 @@ MonoBehaviour:
   SpawnObjectMaxY: 100
   BulletMinZ: 0
   RocketSpeed: 50
-  ShootDelay: 0.6
+  ShootDelay: 0.05
   ScoreForFirstLevel: 100
   GoatSpownPoints:
   - {x: 0, y: 100, z: 60}

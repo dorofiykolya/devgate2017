@@ -5,7 +5,6 @@ Shader "Bag"
     Properties 
     {
         _Color("Color", Color) = (1, 0, 0, 1)
-        _Noise ("Noise", 2D) = "white" {}
     }
     SubShader {
         Tags 
@@ -29,7 +28,6 @@ Shader "Bag"
                 #include "UnityCG.cginc"
                 
                 uniform half4 _Color;
-                uniform sampler2D _Noise;
                 
                 struct VertexInput 
                 {
