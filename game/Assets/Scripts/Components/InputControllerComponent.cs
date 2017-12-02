@@ -60,8 +60,11 @@ namespace DevGate
                 }
                 else if (touch.phase == TouchPhase.Moved)
                 {
+                    settings = GameContext.LevelController.Current.Settings;
                     _currentPower = _startTouchPosition.y - touch.position.y;
-                    _horizontalPosition = touch.position.x - _startTouchPosition.x;
+                    var horizontal = (touch.position.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
+                    var halfAngle = settings.MaxHorizontalAngle * 0.5f;
+                    _horizontalPosition = Mathf.Clamp(horizontal, -halfAngle, halfAngle);
                     _onPowerChange.Fire(_currentPower);
                     _onHorizontalChange.Fire(_horizontalPosition);
                 }
