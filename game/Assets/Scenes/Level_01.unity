@@ -112,6 +112,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &132484396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 132484397}
+  m_Layer: 0
+  m_Name: Obelisk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &132484397
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 132484396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.7, y: 0, z: -23.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2073513464}
+  - {fileID: 1986463101}
+  - {fileID: 269380631}
+  - {fileID: 1954611689}
+  m_Father: {fileID: 859707904}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228272329
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +312,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &269380630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 269380631}
+  m_Layer: 0
+  m_Name: Rune2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269380631
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269380630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132484397}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &362155853
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +598,6 @@ GameObject:
   - component: {fileID: 572096839}
   - component: {fileID: 572096837}
   - component: {fileID: 572096836}
-  - component: {fileID: 572096838}
   - component: {fileID: 572096835}
   m_Layer: 0
   m_Name: Camera
@@ -580,24 +639,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 572096834}
   m_Enabled: 1
---- !u!95 &572096838
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95229032508907664, guid: 4ebdb392cf2f902448b0faaf0735590d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 572096834}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1059abf35dc0d0046b2c2d0dcadac401, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!20 &572096839
 Camera:
   m_ObjectHideFlags: 0
@@ -771,7 +812,7 @@ Transform:
   m_GameObject: {fileID: 742908560}
   m_LocalRotation: {x: -0, y: 0.9945219, z: -0.10452846, w: 0}
   m_LocalPosition: {x: 0, y: -1.7600023, z: 9.459993}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 2069916506}
   m_Father: {fileID: 924080874}
@@ -870,6 +911,53 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 780001312}
+--- !u!1 &802835043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 802835044}
+  - component: {fileID: 802835045}
+  m_Layer: 0
+  m_Name: CameraAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802835044
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 802835043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 924080874}
+  m_Father: {fileID: 1299875550}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &802835045
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 802835043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1059abf35dc0d0046b2c2d0dcadac401, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &859707901
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,17 +989,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 572096839}
-  StartLevelAnimator: {fileID: 572096838}
+  StartLevelAnimator: {fileID: 802835045}
   Settings: {fileID: 11400000, guid: 6a9f744ebd8ffcd498429b4699afec8d, type: 2}
   HudComponent: {fileID: 1319713578}
   Environment: {fileID: 391980226}
   BoatController: {fileID: 2069916509}
   ShakeComponent: {fileID: 1299875551}
-  RunesTransforms:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  RunesPositions:
+  - {fileID: 2073513464}
+  - {fileID: 1986463101}
+  - {fileID: 269380631}
+  - {fileID: 1954611689}
 --- !u!114 &859707903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,6 +1025,7 @@ Transform:
   m_Children:
   - {fileID: 501382271}
   - {fileID: 1319713579}
+  - {fileID: 132484397}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -952,7 +1041,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 742908561}
-  m_Father: {fileID: 1299875550}
+  m_Father: {fileID: 802835044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1148617033
@@ -1111,7 +1200,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 924080874}
+  - {fileID: 802835044}
   m_Father: {fileID: 501382271}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1126,8 +1215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73c289d3913a0e40971384cc8e6ed1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeTime: 0
-  ShakeOffset: {x: 0, y: 0, z: 0}
+  ShakeTime: 0.2
+  ShakeOffset: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &1319713577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,6 +5036,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1954611688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1954611689}
+  m_Layer: 0
+  m_Name: Rune3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954611689
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954611688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132484397}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1986463100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1986463101}
+  m_Layer: 0
+  m_Name: Rune1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986463101
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986463100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 24.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132484397}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991144154
 GameObject:
   m_ObjectHideFlags: 0
@@ -5142,19 +5287,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.76903373
+      value: 0.22511417
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.63920814
+      value: -0.9743324
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.27116835
+      value: -0.79854494
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.9625319
+      value: -0.6019352
       objectReference: {fileID: 0}
     - target: {fileID: 4182710801736054, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalScale.y
@@ -5166,19 +5311,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.00000058114523
+      value: -0.00000071525574
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.00000046938652
+      value: 0.000000113621354
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.0000007003545
+      value: 0.0000008419155
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.00000038370484
+      value: 0.00000359863
       objectReference: {fileID: 0}
     - target: {fileID: 1489697445649706, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_IsActive
@@ -5239,6 +5384,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f42aca737e07e743aed2f8a7da65ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2073513463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2073513464}
+  m_Layer: 0
+  m_Name: Rune0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2073513464
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073513463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 34.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132484397}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2079035180
 GameObject:
   m_ObjectHideFlags: 0

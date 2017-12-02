@@ -40,7 +40,9 @@ namespace DevGate
             Transform currentSpawn = _lastShootLeft ? _rightSpawn : _leftSpawn;
 
             var bullet = _level.Settings.Rockets[0];
-            var bulletGo = GameObject.Instantiate<BoatRocketComponent>(bullet, currentSpawn);
+            var bulletGo = GameObject.Instantiate<BoatRocketComponent>(bullet, _level.BulletTransform, false);
+            bulletGo.transform.position = currentSpawn.position;
+            bulletGo.transform.rotation = currentSpawn.rotation;
             bulletGo.Go();
             _level.ShakeCamera();
         }

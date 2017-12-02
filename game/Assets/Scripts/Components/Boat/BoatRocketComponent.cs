@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Utils;
 
 namespace DevGate
 {
     public class BoatRocketComponent : MonoBehaviour
     {
         float speed = 20;
+        private Lifetime.Definition _definition;
+
+        private void OnEnable()
+        {
+            _definition = Lifetime.Define(GameContext.Lifetime);
+        }
+
+        private void OnDisable()
+        {
+            _definition.Terminate();
+        }
 
         public void Go()
         {
-            GameContext.SubscribeOnUpdate(GameContext.Lifetime, OnUpdate);
-            transform.SetParent(null);
+            GameContext.SubscribeOnUpdate(_definition.Lifetime, OnUpdate);
         }
 
         private void OnUpdate(float deltaTime)

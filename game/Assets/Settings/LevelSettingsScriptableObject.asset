@@ -13,6 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnComponents:
   - {fileID: 114266182623550144, guid: 92e95fd09301a824ba5c8db84c312337, type: 2}
+  - {fileID: 114102854080923110, guid: 51b6024b53392d54cace5149a1c25659, type: 2}
+  - {fileID: 114376934203321230, guid: bcded0e4030e9b14abf61506e51ffb86, type: 2}
+  - {fileID: 114600647670748400, guid: de1af85f82fa73647bb3d92f070020a6, type: 2}
+  - {fileID: 114246370517523288, guid: 10f33843bbab1074d8f37b5649435e86, type: 2}
   Rockets:
   - {fileID: 114662887426597318, guid: 474a456b39f41c44d9a572c6fc430eec, type: 2}
   MaxHorizontalAngle: 60
