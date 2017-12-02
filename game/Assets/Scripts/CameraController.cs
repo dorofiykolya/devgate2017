@@ -7,8 +7,8 @@ public class CameraController : MonoBehaviour {
     private bool resetRotation = false;
     private Vector3 targetRotation;
     private float speed = 2f;
-    private float minX = -28;
-    private float maxX = 78;
+    private float minX = -50;
+    private float maxX = 50;
 
     void Start ()
     {

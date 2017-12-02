@@ -9,7 +9,6 @@ namespace DevGate
 {
     public class BoatRocketComponent : MonoBehaviour
     {
-        float speed = 20;
         private Lifetime.Definition _definition;
 
         private void OnEnable()
@@ -29,7 +28,7 @@ namespace DevGate
 
         private void OnUpdate(float deltaTime)
         {
-            transform.Translate( Vector3.back * speed * Time.deltaTime);
+            transform.Translate( Vector3.back * GameContext.LevelController.Current.Settings.RocketSpeed * Time.deltaTime);
         }
 
         public void OnTriggerStay(Collider collider)
