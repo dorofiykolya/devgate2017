@@ -9,5 +9,8 @@ namespace DevGate
     public class SpawnComponent : MonoBehaviour
     {
         public int RewardScore;
+        public SpawnType Type;
+        public bool Hit;
+        public RuneId RuneId;
     }
 }

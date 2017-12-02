@@ -35,7 +35,7 @@ namespace DevGate
             }
         }
 
-        public void Add(Vector3 point)
+        public void AddSpawnPoint(Vector3 point)
         {
             _spawnPoints.Add(point);
         }
@@ -48,7 +48,7 @@ namespace DevGate
             foreach (var vertex in mesh.vertices)
             {
                 var point = position + vertex;
-                Add(point);
+                AddSpawnPoint(point);
             }
         }
 
@@ -69,18 +69,29 @@ namespace DevGate
                 var toRemove = ListPool<ActiveSpawn>.Pop();
                 foreach (var activeSpawn in _activeSpawns)
                 {
-                    var trans = activeSpawn.Spawn.transform;
-                    activeSpawn.CurrentVelocity += activeSpawn.Velocity * Time.deltaTime;
-                    var speed = activeSpawn.Speed + activeSpawn.CurrentVelocity;
-                    trans.Translate(new Vector3(0, speed * Time.deltaTime, 0));
-
-                    if (trans.position.y > _settings.SpawnObjectMaxY)
+                    if (activeSpawn.Spawn.Hit)
                     {
-                        toRemove.Add(activeSpawn);
+                        //do hit
+                    }
+                    else
+                    {
+                        var trans = activeSpawn.Spawn.transform;
+                        activeSpawn.CurrentVelocity += activeSpawn.Velocity * Time.deltaTime;
+                        var speed = activeSpawn.Speed + activeSpawn.CurrentVelocity;
+                        trans.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+
+                        if (trans.position.y > _settings.SpawnObjectMaxY)
+                        {
+                            toRemove.Add(activeSpawn);
+                        }
                     }
                 }
                 foreach (var activeSpawn in toRemove)
                 {
+                    if (activeSpawn.Spawn.Type == SpawnType.Trash)
+                    {
+                        _levelComponent.State.UpdateLife(-1);
+                    }
                     activeSpawn.Lifetime.Terminate();
                 }
                 ListPool.Push(toRemove);
@@ -122,6 +133,7 @@ namespace DevGate
 
                 def.Lifetime.AddAction(() =>
                 {
+                    spawn.Hit = false;
                     factory.Push(spawn);
                     ToPool(spawn.transform);
                     _activeSpawns.Remove(active);

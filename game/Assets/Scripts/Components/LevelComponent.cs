@@ -13,6 +13,7 @@ namespace DevGate
         private Transform _poolTransform;
         private Transform _bulletTransform;
         private Transform _activeSpawnTransform;
+        private Transform _runeTransform;
 
         public Camera Camera;
         public Animator StartLevelAnimator;
@@ -25,10 +26,14 @@ namespace DevGate
         public ShootController ShootController;
         public BoatControllerComponent BoatController;
         public CameraShakeComponent ShakeComponent;
+        public RuneRequirementController RuneRequirementController;
+
+        public Transform[] RunesPositions;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
         public Transform BulletTransform { get { return _bulletTransform; } }
         public Transform ActiveSpawnTransform { get { return _activeSpawnTransform; } }
+        public Transform RuneTransform { get { return _runeTransform; } }
 
         public void StartLevel()
         {
@@ -36,6 +41,7 @@ namespace DevGate
 
             StartLevelAnimator.SetTrigger("Start");
             Spawn.Start();
+            RuneRequirementController.Start();
         }
 
         public void ShakeCamera()
@@ -61,6 +67,8 @@ namespace DevGate
             _poolTransform.gameObject.SetActive(false);
             _activeSpawnTransform = new GameObject("ActiveSpawn").transform;
             _activeSpawnTransform.SetParent(transform);
+            _runeTransform = new GameObject("Runes").transform;
+            _runeTransform.SetParent(transform);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
@@ -74,6 +82,8 @@ namespace DevGate
             Spawn.Init();
 
             ShootController = new ShootController(this);
+
+            RuneRequirementController = new RuneRequirementController(this);
 
             GameContext.DelayCall(1f, StartLevel);
         }

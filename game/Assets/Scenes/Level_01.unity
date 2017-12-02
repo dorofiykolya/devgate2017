@@ -907,6 +907,11 @@ MonoBehaviour:
   Environment: {fileID: 391980226}
   BoatController: {fileID: 2069916509}
   ShakeComponent: {fileID: 1299875551}
+  RunesTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &859707903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73c289d3913a0e40971384cc8e6ed1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeTime: 0
+  ShakeOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1319713577
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,19 +5142,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.6749962
+      value: 0.76903373
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.73782134
+      value: -0.63920814
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.9485726
+      value: -0.27116835
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.31655994
+      value: -0.9625319
       objectReference: {fileID: 0}
     - target: {fileID: 4182710801736054, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalScale.y
@@ -5159,19 +5166,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.00000035762784
+      value: -0.00000058114523
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.0000007003545
+      value: -0.00000046938652
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.00000028684735
+      value: -0.0000007003545
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.00000067800283
+      value: 0.00000038370484
       objectReference: {fileID: 0}
     - target: {fileID: 1489697445649706, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_IsActive
