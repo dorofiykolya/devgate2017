@@ -31,7 +31,7 @@ namespace DevGate
 
         public void OnReplayClick()
         {
-            //TODO
+            Game.Instance.Restart();
             Hide();
         }
 
