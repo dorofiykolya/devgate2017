@@ -11,6 +11,7 @@ namespace DevGate
     {
         private Lifetime.Definition _definition;
         private Transform _poolTransform;
+        private Transform _bulletTransform;
 
         public Camera Camera;
         public Animator StartLevelAnimator;
@@ -24,6 +25,7 @@ namespace DevGate
         public BoatControllerComponent BoatController;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
+        public Transform BulletTransform { get { return _bulletTransform; } }
 
         public void StartLevel()
         {
@@ -43,8 +45,10 @@ namespace DevGate
 
             _definition = Lifetime.Define(GameContext.LevelController.LeveLifetime);
 
+            _bulletTransform = new GameObject("Bullets").transform;
+            _bulletTransform.SetParent(transform);
             _poolTransform = new GameObject("Pool").transform;
-            transform.SetParent(_poolTransform);
+            _poolTransform.SetParent(transform);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
