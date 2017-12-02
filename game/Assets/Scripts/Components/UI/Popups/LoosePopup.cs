@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,13 @@ namespace DevGate
 
         public void OnReplayClick()
         {
+            StartCoroutine(WaitAndRestart());
+        }
+
+        IEnumerator WaitAndRestart()
+        {
+            yield return null;
             Game.Instance.Restart();
-            Hide();
         }
     }
 }
