@@ -29,9 +29,11 @@ namespace DevGate
         private Signal<float> _onHorizontalChange;
 
         private bool _mousePressed = false;
+        private LevelSettingsScriptableObject settings;
 
         public void Init(Lifetime lifetime)
         {
+            
             Game.Instance.OnUpdate.Subscribe(lifetime, OnUpdate);
             _onShoot = new Signal(lifetime);
             _onPowerChange = new Signal<float>(lifetime);
@@ -91,8 +93,11 @@ namespace DevGate
             }
             else if (Input.GetMouseButton(0) && _mousePressed)
             {
+                settings = GameContext.LevelController.Current.Settings;
                 _currentPower = _startTouchPosition.y - Input.mousePosition.y;
-                _horizontalPosition = Input.mousePosition.x - _startTouchPosition.x;
+                var horizontal = (Input.mousePosition.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
+                var halfAngle = settings.MaxHorizontalAngle * 0.5f;
+                _horizontalPosition = Mathf.Clamp(horizontal, -halfAngle, halfAngle);
                 _onPowerChange.Fire(_currentPower);
                 _onHorizontalChange.Fire(_horizontalPosition);
             }

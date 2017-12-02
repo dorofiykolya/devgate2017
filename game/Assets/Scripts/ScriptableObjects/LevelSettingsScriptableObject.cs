@@ -10,5 +10,7 @@ namespace DevGate
     {
         public SpawnComponent[] SpawnComponents;
         public BoatRocketComponent[] Rockets;
+        public float MaxHorizontalAngle;
+        public float ScreenDragCoeff;
     }
 }
