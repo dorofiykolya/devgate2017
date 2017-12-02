@@ -14,6 +14,7 @@ namespace DevGate
         private Transform _bulletTransform;
         private Transform _activeSpawnTransform;
         private Transform _runeTransform;
+        private Transform _effectTransform;
 
         public Camera Camera;
         public Animator StartLevelAnimator;
@@ -27,6 +28,7 @@ namespace DevGate
         public BoatControllerComponent BoatController;
         public CameraShakeComponent ShakeComponent;
         public RuneRequirementController RuneRequirementController;
+        public ExplosionController ExplosionController;
 
 
         public Transform[] RunesPositions;
@@ -35,6 +37,7 @@ namespace DevGate
         public Transform BulletTransform { get { return _bulletTransform; } }
         public Transform ActiveSpawnTransform { get { return _activeSpawnTransform; } }
         public Transform RuneTransform { get { return _runeTransform; } }
+        public Transform EffectTransform { get { return _effectTransform; } }
 
         public void StartLevel()
         {
@@ -62,14 +65,16 @@ namespace DevGate
             _definition = Lifetime.Define(GameContext.LevelController.LeveLifetime);
 
             _bulletTransform = new GameObject("Bullets").transform;
-            _bulletTransform.SetParent(transform);
+            _bulletTransform.SetParent(transform, false);
             _poolTransform = new GameObject("Pool").transform;
-            _poolTransform.SetParent(transform);
+            _poolTransform.SetParent(transform, false);
             _poolTransform.gameObject.SetActive(false);
             _activeSpawnTransform = new GameObject("ActiveSpawn").transform;
-            _activeSpawnTransform.SetParent(transform);
+            _activeSpawnTransform.SetParent(transform, false);
             _runeTransform = new GameObject("Runes").transform;
-            _runeTransform.SetParent(transform);
+            _runeTransform.SetParent(transform, false);
+            _effectTransform = new GameObject("Effects").transform;
+            _effectTransform.SetParent(transform, false);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
@@ -85,6 +90,7 @@ namespace DevGate
             ShootController = new ShootController(this);
 
             RuneRequirementController = new RuneRequirementController(this);
+            ExplosionController = new ExplosionController(this);
 
             GameContext.DelayCall(1f, StartLevel);
         }

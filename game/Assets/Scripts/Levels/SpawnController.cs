@@ -71,7 +71,17 @@ namespace DevGate
                 {
                     if (activeSpawn.Spawn.Hit)
                     {
-                        //do hit
+                        if (!activeSpawn.BlockRemove)
+                        {
+                            activeSpawn.Spawn.SubscribeOnPlayDestroyComplete(_levelComponent.Lifetime, () =>
+                            {
+                                _activeSpawns.Remove(activeSpawn);
+                                activeSpawn.BlockRemove = false;
+                            });
+                            _levelComponent.ExplosionController.Explosion(activeSpawn.Spawn.transform.position);
+                            activeSpawn.BlockRemove = true;
+                            GameContext.StartCoroutine(activeSpawn.Spawn.PlayDestroy());
+                        }
                     }
                     else
                     {
@@ -92,7 +102,10 @@ namespace DevGate
                     {
                         _levelComponent.State.UpdateLife(-1);
                     }
-                    activeSpawn.Lifetime.Terminate();
+                    if (!activeSpawn.BlockRemove)
+                    {
+                        activeSpawn.Lifetime.Terminate();
+                    }
                 }
                 ListPool.Push(toRemove);
             });
@@ -147,6 +160,7 @@ namespace DevGate
             public SpawnComponent Spawn;
             public Lifetime.Definition Lifetime;
 
+            public bool BlockRemove;
             public float Speed;
             public float Velocity;
             public float CurrentVelocity;

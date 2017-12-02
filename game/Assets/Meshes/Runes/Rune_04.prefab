@@ -36,8 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4494305793065760}
-  - component: {fileID: 114246370517523288}
   - component: {fileID: 65638704744296894}
+  - component: {fileID: 114964689742202148}
   m_Layer: 0
   m_Name: Rune_04
   m_TagString: Untagged
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.820663, y: 12.464598, z: 4.757083}
   m_Center: {x: -0.15799618, y: -0.027762413, z: 1.1129661}
---- !u!114 &114246370517523288
+--- !u!114 &114964689742202148
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,10 +133,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1365303141156784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e7fb2241d2d7345add730fe461b89b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1760a2f56718f284791d6266a6a0dc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RewardScore: 0
   Type: 1
   Hit: 0
   RuneId: 3
+  MeshRenderer: {fileID: 23671325528000614}
+  DissolveTime: 1
