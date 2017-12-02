@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Utils;
 
 namespace DevGate
@@ -54,6 +55,7 @@ namespace DevGate
 
         private void ProcessTouches()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (Input.touchCount == 1)
             {
                 Touch touch = Input.touches[0];
@@ -87,6 +89,7 @@ namespace DevGate
 
         private void ProcessMouse()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (Input.GetMouseButtonUp(0))
             {
                 if (Time.time - touchTime <= clickTime)
