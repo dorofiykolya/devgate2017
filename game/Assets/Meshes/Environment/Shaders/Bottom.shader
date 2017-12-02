@@ -3,9 +3,6 @@
 Shader "Environment/Bottom" {
     Properties 
     {
-        [NoScaleOffset] _Tex01 ("Texture 01", 2D) = "white" {}
-        [NoScaleOffset] _Tex02("Texture 02", 2D) = "white" {}
-        [NoScaleOffset] _Tex03 ("Texture 03", 2D) = "white" {}
         _Color_01 ("Color 01", Color) = (1, 1, 1, 1)
         _Color_02 ("Color 02", Color) = (1, 1, 1, 1)
         _Color_03 ("Color 03", Color) = (1, 1, 1, 1)
@@ -71,13 +68,13 @@ Shader "Environment/Bottom" {
                     half4 tex_02 = _Color_02;
                     half4 tex_03 = _Color_03;
 
-                    half4 caustics_01 = tex2D(_Caustics, 2 * i.uv + _Time.rr * .5);
-                    half4 caustics_02 = tex2D(_Caustics, 1 * i.uv - _Time.rr * .25);
+                    half4 caustics_01 = tex2D(_Caustics, 4 * i.uv + _Time.rr * .5);
+                    half4 caustics_02 = tex2D(_Caustics, 2 * i.uv - _Time.rr * .25);
                     
                     float4 iter01 = lerp(tex_01, tex_02, i.color.r);
                     float4 iter02 = lerp(iter01, tex_03, i.color.g);
 
-                    float4 final = saturate(iter02 + (1 - i.color.r) * .5 * caustics_01 * caustics_02) * i.color.a;
+                    float4 final = saturate(iter02 + (1 - i.color.r) * .3 * caustics_01 * caustics_02) * i.color.a;
                     UNITY_APPLY_FOG(i.fogCoord, final);
                     return final;
                 }
