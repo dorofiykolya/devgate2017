@@ -21,25 +21,13 @@ namespace DevGate
             transform.Translate( Vector3.back * speed * Time.deltaTime);
         }
 
-        public void OnTriggerEnter(Collider collider)
-        {
-            var target = collider.gameObject.GetComponent<SpawnComponent>();
-            if (target != null)
-            {
-                Debug.LogWarning("Bingo");
-                GameContext.LevelController.Current.State.UpdateScore(target.RewardScore);
-                //TODO
-            }
-        }
-
         public void OnTriggerStay(Collider collider)
         {
             var target = collider.gameObject.GetComponent<SpawnComponent>();
-            if (target != null)
+            if (target != null && !target.Hit)
             {
-                Debug.LogWarning("Bingo");
+                target.Hit = true;
                 GameContext.LevelController.Current.State.UpdateScore(target.RewardScore);
-                //TODO
             }
         }
     }
