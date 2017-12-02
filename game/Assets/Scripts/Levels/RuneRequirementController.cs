@@ -49,7 +49,7 @@ namespace DevGate
 
         public void SpawnRequirement()
         {
-            if (_requirements.Count == 0)
+            if (_requirements.Count == 0 && _factories.Count != 0)
             {
                 for (int i = 0; i < 4; i++)
                 {
