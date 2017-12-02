@@ -64,6 +64,27 @@ namespace DevGate
 
         private void StartListener()
         {
+            GameContext.SubscribeOnUpdate(_levelComponent.Lifetime, (deltaTime) =>
+            {
+                var toRemove = ListPool<ActiveSpawn>.Pop();
+                foreach (var activeSpawn in _activeSpawns)
+                {
+                    var trans = activeSpawn.Spawn.transform;
+                    activeSpawn.CurrentVelocity += activeSpawn.Velocity * Time.deltaTime;
+                    var speed = activeSpawn.Speed + activeSpawn.CurrentVelocity;
+                    trans.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+
+                    if (trans.position.y > _settings.SpawnObjectMaxY)
+                    {
+                        toRemove.Add(activeSpawn);
+                    }
+                }
+                foreach (var activeSpawn in toRemove)
+                {
+                    activeSpawn.Lifetime.Terminate();
+                }
+                ListPool.Push(toRemove);
+            });
             GameContext.StartCoroutine(_levelComponent.Lifetime, SpawnObjects());
         }
 
@@ -86,16 +107,15 @@ namespace DevGate
                 var spawn = factory.Pop();
                 spawn.transform.SetParent(_levelComponent.ActiveSpawnTransform);
 
-                spawn.Speed = _settings.SpawnSpeed;
-                spawn.Velocity = _settings.SpawnVelocity;
-
                 var point = _spawnPoints[_random.Next(_spawnPoints.Count)];
                 spawn.transform.position = point;
 
                 var active = new ActiveSpawn
                 {
                     Spawn = spawn,
-                    Lifetime = def
+                    Lifetime = def,
+                    Speed = _settings.SpawnSpeed,
+                    Velocity = _settings.SpawnVelocity
                 };
 
                 _activeSpawns.Add(active);
@@ -114,6 +134,10 @@ namespace DevGate
         {
             public SpawnComponent Spawn;
             public Lifetime.Definition Lifetime;
+
+            public float Speed;
+            public float Velocity;
+            public float CurrentVelocity;
         }
     }
 }

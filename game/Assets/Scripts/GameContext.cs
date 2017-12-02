@@ -25,6 +25,9 @@ public class GameContext
         _levelController = new GameLevelController();
     }
 
+    public static float TimeScale = 1f;
+
+    public static bool Paused { get { return TimeScale == 0; } set { TimeScale = value ? 1 : 0; } }
     public static bool Initialized { get { return _instance != null; } }
 
     public static GameLevelController LevelController { get { return _instance._levelController; } }
@@ -33,12 +36,12 @@ public class GameContext
     public static GameSceneManager SceneManager { get { return _instance._sceneManager; } }
     public static Transform RooTransform { get { return _instance != null ? _instance._game.transform : null; } }
 
-    public static void SubscribeOnUpdate(Lifetime lifetime, Action listener)
+    public static void SubscribeOnUpdate(Lifetime lifetime, Action<float> listener)
     {
-        _instance._game.OnUpdate.Subscribe(lifetime, listener);
+        _instance._game.OnUpdate.Subscribe(lifetime, () => listener(Time.deltaTime * TimeScale));
     }
 
-    public static Lifetime.Definition SubscribeOnUpdate(Action listener)
+    public static Lifetime.Definition SubscribeOnUpdate(Action<float> listener)
     {
         var def = Lifetime.Define(Lifetime);
         SubscribeOnUpdate(def.Lifetime, listener);

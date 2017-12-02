@@ -17,3 +17,8 @@ MonoBehaviour:
   - {fileID: 114662887426597318, guid: 474a456b39f41c44d9a572c6fc430eec, type: 2}
   MaxHorizontalAngle: 60
   ScreenDragCoeff: 30
+  DelaySpawn: 2
+  SpawnTime: 3
+  SpawnSpeed: 5
+  SpawnVelocity: 0.1
+  SpawnObjectMaxY: 100

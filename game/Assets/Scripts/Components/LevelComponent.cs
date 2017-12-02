@@ -52,12 +52,13 @@ namespace DevGate
             _bulletTransform.SetParent(transform);
             _poolTransform = new GameObject("Pool").transform;
             _poolTransform.SetParent(transform);
+            _poolTransform.gameObject.SetActive(false);
             _activeSpawnTransform = new GameObject("ActiveSpawn").transform;
             _activeSpawnTransform.SetParent(transform);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
-            
+
             State = new LevelState();
             State.Init(Lifetime);
 

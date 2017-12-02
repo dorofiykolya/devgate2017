@@ -16,7 +16,7 @@ namespace DevGate
             {
                 foreach (var component in GetComponents<MonoBehaviour>())
                 {
-                    if (component != this && !(component is Transform))
+                    if (component != this)
                         DestroyImmediate(component);
                 }
                 SceneManager.LoadScene(Scenes.Main.ToString());
