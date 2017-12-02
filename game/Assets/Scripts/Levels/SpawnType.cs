@@ -9,6 +9,7 @@ namespace DevGate
     {
         Trash,
         Rune,
-        Bonus
+        Bonus,
+        Goat,
     }
 }
