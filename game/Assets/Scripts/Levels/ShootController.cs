@@ -18,11 +18,13 @@ namespace DevGate
         private bool _lastShootLeft;
 
         private bool _canShoot = true;
-        private AudioClip shootClip;
+        private AudioClip _shootClip;
+        
 
         public ShootController(LevelComponent level)
         {
-            shootClip = Resources.Load<AudioClip>("Audio/torpedo");
+            _shootClip = Resources.Load<AudioClip>("Audio/torpedo");
+
             _level = level;
 
             _leftSpawn = level.BoatController.Left;
@@ -86,7 +88,7 @@ namespace DevGate
                 _level.ToPool(bulletGo.transform);
                 _activeBullets.Remove(bullet);
             });
-            Sound.Play(shootClip);
+            Sound.Play(_shootClip);
 
             _level.ShakeCamera();
             GameContext.DelayCall(_level.Settings.ShootDelay, () => _canShoot = true);

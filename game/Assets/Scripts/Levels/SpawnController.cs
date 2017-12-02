@@ -16,12 +16,15 @@ namespace DevGate
         private readonly List<ActiveSpawn> _activeSpawns;
         private readonly List<PoolFactory<SpawnComponent>> _factories;
         private readonly System.Random _random;
+        private AudioClip _ballonHitClip;
         private int _lastSpawnIndex;
 
         public SpawnController(LevelComponent levelComponent, LevelSettingsScriptableObject settings)
         {
             _levelComponent = levelComponent;
             _settings = settings;
+
+            _ballonHitClip = Resources.Load<AudioClip>("Audio/balloonhit");
 
             _random = new System.Random();
             _spawnPoints = new List<Vector3>();
@@ -81,6 +84,7 @@ namespace DevGate
                             });
                             _levelComponent.ExplosionController.Explosion(activeSpawn.Spawn.transform.position);
                             activeSpawn.BlockRemove = true;
+                            Sound.Play(_ballonHitClip);
                             GameContext.StartCoroutine(activeSpawn.Spawn.PlayDestroy());
                         }
                     }
