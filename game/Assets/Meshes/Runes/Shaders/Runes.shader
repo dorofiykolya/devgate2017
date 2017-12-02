@@ -55,13 +55,10 @@
 			{
 				// sample the texture
 
-				float3 dir = normalize(float3(0, 1, .5));
-				float shade = dot(i.normal, dir);
-
 				fixed4 height = tex2D(_HeightMap, i.uv);
 				float c = height.r - _Dissolve;
 
-				float4 col = _Color * shade;
+				float4 col = _Color;
 
 				clip(c);
 				// apply fog
