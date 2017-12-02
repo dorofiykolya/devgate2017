@@ -6,12 +6,12 @@ public class BoatRotationComponent : MonoBehaviour
 {
     private bool resetRotation = false;
     private Vector3 targetRotation;
-    private float speed = 6f;
+    private float speed = 2f;
 
     void Start()
     {
-        GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, SetHorizontalPosition);
-        GameContext.LevelController.Current.InputController.SubscribeOnShoot(GameContext.Lifetime,  ResetRotation);
+        //GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, SetHorizontalPosition);
+        //GameContext.LevelController.Current.InputController.SubscribeOnShoot(GameContext.Lifetime,  ResetRotation);
     }
 
     private void SetHorizontalPosition(float value)

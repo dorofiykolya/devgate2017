@@ -10,16 +10,16 @@ namespace DevGate
     {
 
         private float _currentPower = 0;
-        private float _horizontalPosition = 0;
+        private float _horizontalDelta = 0;
 
         public float CurrentPower
         {
             get { return _currentPower; }
         }
 
-        public float HorizontalPosition
+        public float HorizontalDelta
         {
-            get { return _horizontalPosition; }
+            get { return _horizontalDelta; }
         }
 
         private Vector2 _startTouchPosition = Vector2.zero;
@@ -62,17 +62,15 @@ namespace DevGate
                 {
                     settings = GameContext.LevelController.Current.Settings;
                     _currentPower = _startTouchPosition.y - touch.position.y;
-                    var horizontal = (touch.position.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
-                    var halfAngle = settings.MaxHorizontalAngle * 0.5f;
-                    _horizontalPosition = Mathf.Clamp(horizontal, -halfAngle, halfAngle);
+                    _horizontalDelta = touch.deltaPosition.x / Screen.dpi * settings.ScreenDragCoeff;
                     _onPowerChange.Fire(_currentPower);
-                    _onHorizontalChange.Fire(_horizontalPosition);
+                    _onHorizontalChange.Fire(_horizontalDelta);
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
                     _onShoot.Fire();
                     _currentPower = 0;
-                    _horizontalPosition = 0;
+                    _horizontalDelta = 0;
                     _startTouchPosition = Vector2.zero;
                 }
             }
@@ -84,7 +82,7 @@ namespace DevGate
             {
                 _onShoot.Fire();
                 _currentPower = 0;
-                _horizontalPosition = 0;
+                _horizontalDelta = 0;
                 _startTouchPosition = Vector2.zero;
                 _mousePressed = false;
                 return;
@@ -98,11 +96,10 @@ namespace DevGate
             {
                 settings = GameContext.LevelController.Current.Settings;
                 _currentPower = _startTouchPosition.y - Input.mousePosition.y;
-                var horizontal = (Input.mousePosition.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
-                var halfAngle = settings.MaxHorizontalAngle * 0.5f;
-                _horizontalPosition = Mathf.Clamp(horizontal, -halfAngle, halfAngle);
+                _horizontalDelta = (Input.mousePosition.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
+                _startTouchPosition = Input.mousePosition;
                 _onPowerChange.Fire(_currentPower);
-                _onHorizontalChange.Fire(_horizontalPosition);
+                _onHorizontalChange.Fire(_horizontalDelta);
             }
         }
 

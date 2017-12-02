@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	
-	void Start ()
-    {
-        GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, RotateCamera);
-	}
-	
+    private bool resetRotation = false;
+    private Vector3 targetRotation;
+    private float speed = 2f;
+    private float minX = -28;
+    private float maxX = 78;
 
-	void RotateCamera(float value)
+    void Start ()
     {
-        Vector3 r = transform.localEulerAngles;
-        r.y = value * 0.2f;
-        transform.localEulerAngles = r;
+        GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, MoveCamera);
+    }
+
+	void MoveCamera(float value)
+    {
+        Vector3 r = transform.localPosition;
+        r.x = Mathf.Clamp(r.x + value * 0.6f, minX, maxX);
+        transform.localPosition = r;
     }
 }
