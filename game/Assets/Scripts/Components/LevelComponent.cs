@@ -23,6 +23,7 @@ namespace DevGate
         public GameHudComponent HudComponent;
         public LevelState State;
         public SpawnController Spawn;
+        public GoatSpawnController GoatSpawn;
         public LevelEnvironmentComponent Environment;
         public ShootController ShootController;
         public BoatControllerComponent BoatController;
@@ -45,6 +46,7 @@ namespace DevGate
 
             StartLevelAnimator.SetTrigger("Start");
             Spawn.Start();
+            GoatSpawn.Start();
             RuneRequirementController.Start();
         }
 
@@ -86,6 +88,9 @@ namespace DevGate
 
             Spawn = new SpawnController(this, Settings);
             Spawn.Init();
+
+            GoatSpawn = new GoatSpawnController(this, Settings);
+            GoatSpawn.Init();
 
             ShootController = new ShootController(this);
 
