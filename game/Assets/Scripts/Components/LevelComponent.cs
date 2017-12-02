@@ -98,7 +98,7 @@ namespace DevGate
             ExplosionController = new ExplosionController(this, Settings.ExplosionEffectPrefab);
             SpawnEffectController = new ExplosionController(this, Settings.SpawnEffectPrefab);
 
-            GameContext.DelayCall(1f, StartLevel);
+            //GameContext.DelayCall(1f, StartLevel);
         }
 
         private void OnDestroy()
