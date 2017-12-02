@@ -56,6 +56,7 @@ namespace DevGate
                     var index = UnityEngine.Random.Range(0, _factories.Count);
                     var factory = _factories[index];
                     var spawn = factory.Pop();
+                    spawn.GetComponent<Collider>().enabled = false;
                     spawn.transform.position = _level.RunesPositions[i].position;
                     spawn.transform.SetParent(_level.RuneTransform);
                     var def = Lifetime.Define(_level.Lifetime);

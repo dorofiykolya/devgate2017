@@ -17,5 +17,6 @@ namespace DevGate
         public float SpawnSpeed = 1f;
         public float SpawnVelocity = 0.1f;
         public float SpawnObjectMaxY = 100f;
+        public float BulletMinZ = 0;
     }
 }

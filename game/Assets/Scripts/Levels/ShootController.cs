@@ -13,6 +13,7 @@ namespace DevGate
         private Transform _leftSpawn;
         private Transform _rightSpawn;
         private List<PoolFactory<BoatRocketComponent>> _factories;
+        private List<ActiveBullet> _activeBullets;
 
         private bool _lastShootLeft;
 
@@ -23,6 +24,7 @@ namespace DevGate
             _leftSpawn = level.BoatController.Left;
             _rightSpawn = level.BoatController.Right;
 
+            _activeBullets = new List<ActiveBullet>();
             _factories = new List<PoolFactory<BoatRocketComponent>>();
 
             foreach (var rocket in level.Settings.Rockets)
@@ -32,6 +34,23 @@ namespace DevGate
             }
 
             level.InputController.SubscribeOnShoot(GameContext.Lifetime, Shoot);
+
+            GameContext.SubscribeOnUpdate(level.Lifetime, (deltaTime) =>
+            {
+                var toRemove = ListPool<ActiveBullet>.Pop();
+                foreach (var bullet in _activeBullets)
+                {
+                    if (bullet.Rocket.transform.position.z <= _level.Settings.BulletMinZ)
+                    {
+                        toRemove.Add(bullet);
+                    }
+                }
+                foreach (var bullet in toRemove)
+                {
+                    bullet.Lifetime.Terminate();
+                }
+                ListPool.Push(toRemove);
+            });
         }
 
         public void Shoot()
@@ -39,17 +58,41 @@ namespace DevGate
             _lastShootLeft = !_lastShootLeft;
             Transform currentSpawn = _lastShootLeft ? _rightSpawn : _leftSpawn;
 
-            var bullet = _level.Settings.Rockets[0];
-            var bulletGo = GameObject.Instantiate<BoatRocketComponent>(bullet, _level.BulletTransform, false);
-            bulletGo.transform.position = currentSpawn.position;
-            bulletGo.transform.rotation = currentSpawn.rotation;
+            var factory = _factories[0];
+            var bulletGo = factory.Pop();
+            var bt = bulletGo.transform;
+            bt.SetParent(_level.BulletTransform, false);
+            bt.position = currentSpawn.position;
+            bt.rotation = currentSpawn.rotation;
             bulletGo.Go();
+
+            var def = Lifetime.Define(_level.Lifetime);
+            var bullet = new ActiveBullet
+            {
+                Rocket = bulletGo,
+                Lifetime = def
+            };
+            _activeBullets.Add(bullet);
+
+            def.Lifetime.AddAction(() =>
+            {
+                factory.Push(bulletGo);
+                _level.ToPool(bulletGo.transform);
+                _activeBullets.Remove(bullet);
+            });
+
             _level.ShakeCamera();
         }
 
         public void ToPool(BoatRocketComponent component)
         {
             _level.ToPool(component.transform);
+        }
+
+        private class ActiveBullet
+        {
+            public BoatRocketComponent Rocket;
+            public Lifetime.Definition Lifetime;
         }
     }
 }
