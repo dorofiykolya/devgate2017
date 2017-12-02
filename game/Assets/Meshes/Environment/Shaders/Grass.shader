@@ -90,10 +90,8 @@ Shader "Environment/Grass"
                 fixed4 col = lerp(_Color_01, _Color_02, i.uv.z + i.uv.w);
                 fixed shade = saturate(i.uv.y + .5);
 
-                    half4 caustics_01 = tex2D(_Caustics, 4 * i.data + _Time.rr * .5);
-                    half4 caustics_02 = tex2D(_Caustics, 2 * i.data - _Time.rr * .25);
-                    
-
+                half4 caustics_01 = tex2D(_Caustics, 4 * i.data + _Time.rr * .5);
+                half4 caustics_02 = tex2D(_Caustics, 2 * i.data - _Time.rr * .25);
 
                 fixed4 final = col * shade + .3 * caustics_01 * caustics_02;
                 UNITY_APPLY_FOG(i.fogCoord, final);
