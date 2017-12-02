@@ -8,6 +8,6 @@ namespace DevGate
 {
     public class SpawnComponent : MonoBehaviour
     {
-
+        public int RewardScore;
     }
 }

@@ -29,7 +29,7 @@ namespace DevGate
         public void Init(LevelComponent level, Lifetime lifetime)
         {
             level.InputController.SubscribeOnPowerChange(lifetime, UpdatePower);
-           // level.State.SubscribeOnStateChanged(lifetime, UpdateLevelState);
+            level.State.SubscribeOnStateChanged(lifetime, UpdateLevelState);
         }
 
         private void UpdatePower(float value)

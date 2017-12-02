@@ -8,5 +8,15 @@ namespace DevGate
 {
     public class BoatRocketComponent : MonoBehaviour
     {
+
+        public void OnTriggerEnter(Collider collider)
+        {
+            var target = collider.gameObject.GetComponent<SpawnComponent>();
+            if (target != null)
+            {
+                GameContext.LevelController.Current.State.UpdateScore(target.RewardScore);
+                //TODO
+            }
+        }
     }
 }
