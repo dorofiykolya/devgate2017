@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 	void MoveCamera(float value)
     {
         Vector3 r = transform.localPosition;
-        r.x = Mathf.Clamp(r.x + value * 0.6f, minX, maxX);
+        r.x = Mathf.Clamp(r.x + value, minX, maxX);
         transform.localPosition = r;
     }
 }

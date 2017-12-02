@@ -35,6 +35,11 @@ namespace DevGate
         {
             _life += delta;
             _onStateChanged.Fire(this);
+            if (_life <= 0)
+            {
+                _life = 0;
+                LoosePopup.ShowPopup();
+            }
         }
 
         public void UpdateScore(int delta)
