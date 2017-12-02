@@ -31,6 +31,9 @@ namespace DevGate
         private bool _mousePressed = false;
         private LevelSettingsScriptableObject settings;
 
+        private float touchTime;
+        private float clickTime = 0.5f;
+
         public void Init(Lifetime lifetime)
         {
             
@@ -57,6 +60,7 @@ namespace DevGate
                 if (touch.phase == TouchPhase.Began)
                 {
                     _startTouchPosition = touch.position;
+                    touchTime = Time.time;
                 }
                 else if (touch.phase == TouchPhase.Moved)
                 {
@@ -68,7 +72,10 @@ namespace DevGate
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
-                    _onShoot.Fire();
+                    if (Time.time - touchTime <= clickTime)
+                    {
+                        _onShoot.Fire();
+                    }
                     _currentPower = 0;
                     _horizontalDelta = 0;
                     _startTouchPosition = Vector2.zero;
@@ -80,17 +87,22 @@ namespace DevGate
         {
             if (Input.GetMouseButtonUp(0))
             {
-                _onShoot.Fire();
+                if (Time.time - touchTime <= clickTime)
+                {
+                    _onShoot.Fire();
+                }
                 _currentPower = 0;
                 _horizontalDelta = 0;
                 _startTouchPosition = Vector2.zero;
                 _mousePressed = false;
                 return;
+
             }
             if (Input.GetMouseButtonDown(0) && !_mousePressed)
             {
                 _startTouchPosition = Input.mousePosition;
                 _mousePressed = true;
+                touchTime = Time.time;
             }
             else if (Input.GetMouseButton(0) && _mousePressed)
             {
