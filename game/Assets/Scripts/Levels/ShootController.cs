@@ -17,6 +17,8 @@ namespace DevGate
 
         private bool _lastShootLeft;
 
+        private bool _canShoot = true;
+
         public ShootController(LevelComponent level)
         {
             _level = level;
@@ -55,6 +57,8 @@ namespace DevGate
 
         public void Shoot()
         {
+            if (!_canShoot) return;
+            _canShoot = false;
             _lastShootLeft = !_lastShootLeft;
             Transform currentSpawn = _lastShootLeft ? _rightSpawn : _leftSpawn;
 
@@ -82,6 +86,7 @@ namespace DevGate
             });
 
             _level.ShakeCamera();
+            GameContext.DelayCall(_level.Settings.ShootDelay, () => _canShoot = true);
         }
 
         public void ToPool(BoatRocketComponent component)

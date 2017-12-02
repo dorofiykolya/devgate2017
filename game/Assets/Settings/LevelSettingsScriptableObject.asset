@@ -27,3 +27,5 @@ MonoBehaviour:
   SpawnVelocity: 0.1
   SpawnObjectMaxY: 100
   BulletMinZ: 0
+  RocketSpeed: 20
+  ShootDelay: 0.6
