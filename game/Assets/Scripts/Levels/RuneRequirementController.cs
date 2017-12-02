@@ -17,20 +17,20 @@ namespace DevGate
         public RuneRequirementController(LevelComponent level)
         {
             _level = level;
-            _runes = _level.Settings.SpawnComponents.Where(s => s.Type == SpawnType.Rune).ToArray();
+            //_runes = _level.Settings.SpawnComponents.Where(s => s.Type == SpawnType.Rune).ToArray();
             _requirements = new List<ActiveRune>();
             _factories = new List<PoolFactory<SpawnComponent>>();
-            foreach (var component in _runes)
-            {
-                _factories.Add(new PoolFactory<SpawnComponent>(() => GameObject.Instantiate<SpawnComponent>(component)));
-            }
+            //foreach (var component in _runes)
+            //{
+            //    _factories.Add(new PoolFactory<SpawnComponent>(() => GameObject.Instantiate<SpawnComponent>(component)));
+            //}
         }
 
         public SpawnComponent[] Runes { get { return _runes; } }
 
         public void Start()
         {
-            SpawnRequirement();
+            //SpawnRequirement();
         }
 
         public IEnumerable<SpawnComponent> Requirements { get { return _requirements.Select(s => s.Spawn); } }

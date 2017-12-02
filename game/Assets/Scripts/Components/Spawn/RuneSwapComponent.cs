@@ -27,13 +27,20 @@ namespace DevGate
         {
             yield return null;
 
-            _remainingTime = DissolveTime;
-            _material = MeshRenderer.material;
-            
-            while (_remainingTime >= 0)
+            if (MeshRenderer != null)
             {
-                _remainingTime -= Time.deltaTime;
-                _material.SetFloat("_Dissolve", (DissolveTime - _remainingTime) / DissolveTime);
+                _remainingTime = DissolveTime;
+                _material = MeshRenderer.material;
+
+                while (_remainingTime >= 0)
+                {
+                    _remainingTime -= Time.deltaTime;
+                    _material.SetFloat("_Dissolve", (DissolveTime - _remainingTime) / DissolveTime);
+                    yield return null;
+                }
+            }
+            else
+            {
                 yield return null;
             }
 

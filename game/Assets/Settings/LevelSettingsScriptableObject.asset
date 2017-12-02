@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Name: LevelSettingsScriptableObject
   m_EditorClassIdentifier: 
   SpawnComponents:
-  - {fileID: 114266182623550144, guid: 92e95fd09301a824ba5c8db84c312337, type: 2}
+  - {fileID: 114310352013514416, guid: 92e95fd09301a824ba5c8db84c312337, type: 2}
   Rockets:
   - {fileID: 114662887426597318, guid: 474a456b39f41c44d9a572c6fc430eec, type: 2}
   GoatSpawnComponent: {fileID: 114499099744355684, guid: c588fa0135714d64080b199a406bd5c1,
     type: 2}
-  ExplosionEffectPrefab: {fileID: 114369569833418168, guid: c52269b7c3abfd44391de3cd3e540f5d,
+  ExplosionEffectPrefab: {fileID: 114420451111830722, guid: f05095f2a07c370498dfb280ebef60ea,
     type: 2}
-  MaxHorizontalAngle: 60
+  MaxHorizontalAngle: 0
   ScreenDragCoeff: 60
   DelaySpawn: 2
-  SpawnTime: 3
+  SpawnTime: 5
   SpawnSpeed: 5
   SpawnVelocity: 0.1
   SpawnObjectMaxY: 100
   BulletMinZ: 0
-  RocketSpeed: 20
+  RocketSpeed: 50
   ShootDelay: 0.6
   ScoreForFirstLevel: 100
   GoatSpownPoints:
