@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Utils;
 
 namespace DevGate
 {
@@ -11,13 +13,26 @@ namespace DevGate
         private readonly LevelComponent _levelComponent;
         private readonly LevelSettingsScriptableObject _settings;
         private readonly List<Vector3> _spawnPoints;
+        private readonly List<ActiveSpawn> _activeSpawns;
+        private readonly List<PoolFactory<SpawnComponent>> _factories;
+        private readonly System.Random _random;
+        private int _lastSpawnIndex;
 
         public SpawnController(LevelComponent levelComponent, LevelSettingsScriptableObject settings)
         {
             _levelComponent = levelComponent;
             _settings = settings;
 
+            _random = new System.Random();
             _spawnPoints = new List<Vector3>();
+            _activeSpawns = new List<ActiveSpawn>();
+            _factories = new List<PoolFactory<SpawnComponent>>();
+
+            foreach (var component in settings.SpawnComponents)
+            {
+                var factory = new PoolFactory<SpawnComponent>(() => GameObject.Instantiate<SpawnComponent>(component));
+                _factories.Add(factory);
+            }
         }
 
         public void Add(Vector3 point)
@@ -35,6 +50,70 @@ namespace DevGate
                 var point = position + vertex;
                 Add(point);
             }
+        }
+
+        public void Start()
+        {
+            GameContext.DelayCall(_levelComponent.Lifetime, _settings.DelaySpawn, StartListener);
+        }
+
+        private void ToPool(Transform transform)
+        {
+            _levelComponent.ToPool(transform);
+        }
+
+        private void StartListener()
+        {
+            GameContext.StartCoroutine(_levelComponent.Lifetime, SpawnObjects());
+        }
+
+        private IEnumerator SpawnObjects()
+        {
+            while (true)
+            {
+                var def = Lifetime.Define(_levelComponent.Lifetime);
+
+                int index = 0;
+                var i = 0;
+                while (i++ < 3)
+                {
+                    index = _random.Next(_factories.Count);
+                    if (index != _lastSpawnIndex) break;
+                    _lastSpawnIndex = index;
+                }
+
+                var factory = _factories[index];
+                var spawn = factory.Pop();
+                spawn.transform.SetParent(_levelComponent.ActiveSpawnTransform);
+
+                spawn.Speed = _settings.SpawnSpeed;
+                spawn.Velocity = _settings.SpawnVelocity;
+
+                var point = _spawnPoints[_random.Next(_spawnPoints.Count)];
+                spawn.transform.position = point;
+
+                var active = new ActiveSpawn
+                {
+                    Spawn = spawn,
+                    Lifetime = def
+                };
+
+                _activeSpawns.Add(active);
+
+                def.Lifetime.AddAction(() =>
+                {
+                    factory.Push(spawn);
+                    ToPool(spawn.transform);
+                    _activeSpawns.Remove(active);
+                });
+                yield return new WaitForSeconds(_settings.SpawnTime);
+            }
+        }
+
+        private class ActiveSpawn
+        {
+            public SpawnComponent Spawn;
+            public Lifetime.Definition Lifetime;
         }
     }
 }

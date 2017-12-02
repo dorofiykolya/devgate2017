@@ -12,6 +12,7 @@ namespace DevGate
         private Lifetime.Definition _definition;
         private Transform _poolTransform;
         private Transform _bulletTransform;
+        private Transform _activeSpawnTransform;
 
         public Camera Camera;
         public Animator StartLevelAnimator;
@@ -26,12 +27,14 @@ namespace DevGate
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
         public Transform BulletTransform { get { return _bulletTransform; } }
+        public Transform ActiveSpawnTransform { get { return _activeSpawnTransform; } }
 
         public void StartLevel()
         {
             HudComponent.Init(this, Lifetime);
 
             StartLevelAnimator.SetTrigger("Start");
+            Spawn.Start();
         }
 
         public void ToPool(Transform value)
@@ -49,6 +52,8 @@ namespace DevGate
             _bulletTransform.SetParent(transform);
             _poolTransform = new GameObject("Pool").transform;
             _poolTransform.SetParent(transform);
+            _activeSpawnTransform = new GameObject("ActiveSpawn").transform;
+            _activeSpawnTransform.SetParent(transform);
 
             InputController = new InputControllerComponent();
             InputController.Init(Lifetime);
@@ -62,6 +67,8 @@ namespace DevGate
             Spawn.Init();
 
             ShootController = new ShootController(this);
+
+            GameContext.DelayCall(1f, StartLevel);
         }
 
         private void OnDestroy()

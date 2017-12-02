@@ -12,5 +12,9 @@ namespace DevGate
         public BoatRocketComponent[] Rockets;
         public float MaxHorizontalAngle;
         public float ScreenDragCoeff;
+        public float DelaySpawn = 2f;
+        public float SpawnTime = 1f;
+        public float SpawnSpeed = 1f;
+        public float SpawnVelocity = 0.1f;
     }
 }

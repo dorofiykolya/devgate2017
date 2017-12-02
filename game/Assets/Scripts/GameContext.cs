@@ -31,7 +31,7 @@ public class GameContext
     public static GameController GameController { get { return _instance._gameController; } }
     public static Lifetime Lifetime { get { return _instance._lifetime; } }
     public static GameSceneManager SceneManager { get { return _instance._sceneManager; } }
-    public static Transform RooTransform { get { return _instance != null? _instance._game.transform : null; } }
+    public static Transform RooTransform { get { return _instance != null ? _instance._game.transform : null; } }
 
     public static void SubscribeOnUpdate(Lifetime lifetime, Action listener)
     {
@@ -57,11 +57,29 @@ public class GameContext
         }
     }
 
+    public static void DelayCall(Lifetime lifetime, float seconds, Action listener)
+    {
+        StartCoroutine(lifetime, DelayCallInternal(seconds, listener));
+    }
+
+    public static Lifetime.Definition DelayCall(float seconds, Action listener)
+    {
+        var def = Lifetime.Define(Lifetime.Eternal);
+        DelayCall(def.Lifetime, seconds, listener);
+        return def;
+    }
+
     public static Lifetime.Definition StartCoroutine(IEnumerator enumerator)
     {
         var def = Lifetime.Define(_instance._lifetime);
         StartCoroutine(def.Lifetime, enumerator);
         return def;
+    }
+
+    private static IEnumerator DelayCallInternal(float seconds, Action listener)
+    {
+        yield return new WaitForSeconds(seconds);
+        listener();
     }
 }
 
