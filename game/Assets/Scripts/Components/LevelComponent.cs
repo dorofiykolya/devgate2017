@@ -24,6 +24,7 @@ namespace DevGate
         public LevelEnvironmentComponent Environment;
         public ShootController ShootController;
         public BoatControllerComponent BoatController;
+        public CameraShakeComponent ShakeComponent;
 
         public Lifetime Lifetime { get { return _definition.Lifetime; } }
         public Transform BulletTransform { get { return _bulletTransform; } }
@@ -35,6 +36,11 @@ namespace DevGate
 
             StartLevelAnimator.SetTrigger("Start");
             Spawn.Start();
+        }
+
+        public void ShakeCamera()
+        {
+            ShakeComponent.Shake();
         }
 
         public void ToPool(Transform value)
