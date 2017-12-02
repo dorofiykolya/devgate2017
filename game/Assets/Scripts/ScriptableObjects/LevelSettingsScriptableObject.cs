@@ -26,7 +26,7 @@ namespace DevGate
         public Vector3[] GoatSpownPoints;
         public float GoatSpawnDelay = 30f;
         public float GoatMaxLiveTime = 10f;
-        public float GoatSpawnSpeed = 1f;
-        public float GoatMinY = -14f;
+        public float GoatSpawnSpeed = 10f;
+        public float GoatMinY = -6f;
     }
 }

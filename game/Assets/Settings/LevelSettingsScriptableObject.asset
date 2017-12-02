@@ -29,3 +29,9 @@ MonoBehaviour:
   RocketSpeed: 20
   ShootDelay: 0.6
   ScoreForFirstLevel: 100
+  GoatSpownPoints:
+  - {x: 0, y: 100, z: 60}
+  GoatSpawnDelay: 30
+  GoatMaxLiveTime: 10
+  GoatSpawnSpeed: 10
+  GoatMinY: -6
