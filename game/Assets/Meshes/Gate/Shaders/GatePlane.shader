@@ -1,8 +1,9 @@
-﻿Shader "Unlit/GatePlane"
+﻿Shader "GatePlane"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Color ("Color", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -12,6 +13,7 @@
             "Queue"="Transparent"
             "RenderType"="Transparent" 
         }
+
 		LOD 100
 		Blend One One
 
@@ -40,6 +42,7 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			float4 _Color;
 			
 			v2f vert (appdata v)
 			{
@@ -53,10 +56,19 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				// sample the texture
-				fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col_01 = tex2D(_MainTex, i.uv + _Time.gg * .25);
+				fixed4 col_02 = tex2D(_MainTex, i.uv - _Time.gg * .1);
+				float col = col_01.r * col_02.r;
+
+				i.uv = (i.uv - .5) * 2;
+				i.uv *= i.uv;
+				float circle = i.uv.x + i.uv.y;
+				circle *= .15 * col.r;
+				float4 final = _Color;
+
 				// apply fog
-				UNITY_APPLY_FOG(i.fogCoord, col);
-				return col;
+				UNITY_APPLY_FOG(i.fogCoord, final);
+				return final * pow(circle, .5);
 			}
 			ENDCG
 		}
