@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	
+	void Start ()
+    {
+        GameContext.LevelController.Current.InputController.SubscribeOnHorizontalCHange(GameContext.Lifetime, RotateCamera);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	void RotateCamera(float value)
+    {
+        Vector3 r = transform.localEulerAngles;
+        r.y = value * 0.2f;
+        transform.localEulerAngles = r;
+    }
 }
