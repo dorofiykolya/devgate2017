@@ -25,7 +25,6 @@ namespace DevGate
         private Vector2 _startTouchPosition = Vector2.zero;
 
         private Signal _onShoot;
-        private Signal<float> _onPowerChange;
         private Signal<float> _onHorizontalChange;
         private Signal<TouchPhase, float> _onTouchProcess;
 
@@ -40,7 +39,6 @@ namespace DevGate
             
             Game.Instance.OnUpdate.Subscribe(lifetime, OnUpdate);
             _onShoot = new Signal(lifetime);
-            _onPowerChange = new Signal<float>(lifetime);
             _onHorizontalChange = new Signal<float>(lifetime);
             _onTouchProcess = new Signal<TouchPhase, float>(lifetime);
         }
@@ -71,7 +69,6 @@ namespace DevGate
                     _currentPower = _startTouchPosition.y - touch.position.y;
                     _horizontalDelta = touch.deltaPosition.x / Screen.dpi * settings.ScreenDragCoeff;
                     _onTouchProcess.Fire(TouchPhase.Moved, _horizontalDelta);
-                    _onPowerChange.Fire(_currentPower);
                     _onHorizontalChange.Fire(_horizontalDelta);
                 }
                 else if (touch.phase == TouchPhase.Ended)
@@ -118,7 +115,6 @@ namespace DevGate
                 _horizontalDelta = (Input.mousePosition.x - _startTouchPosition.x) / Screen.dpi * settings.ScreenDragCoeff;
                 _startTouchPosition = Input.mousePosition;
                 _onTouchProcess.Fire(TouchPhase.Moved, _horizontalDelta);
-                _onPowerChange.Fire(_currentPower);
                 _onHorizontalChange.Fire(_horizontalDelta);
             }
         }
@@ -126,11 +122,6 @@ namespace DevGate
         public void SubscribeOnShoot(Lifetime lifetime, Action callback)
         {
             _onShoot.Subscribe(lifetime, callback);
-        }
-
-        public void SubscribeOnPowerChange(Lifetime lifetime, Action<float> callback)
-        {
-            _onPowerChange.Subscribe(lifetime, callback);
         }
 
         public void SubscribeOnHorizontalCHange(Lifetime lifetime, Action<float> callback)
