@@ -5329,19 +5329,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.8966325
+      value: -0.84171695
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.4427755
+      value: 0.5399191
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.7691847
+      value: 0.15095918
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.6390265
+      value: 0.98854
       objectReference: {fileID: 0}
     - target: {fileID: 4182710801736054, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalScale.y
@@ -5353,19 +5353,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0000003352761
+      value: -0.000000040978197
       objectReference: {fileID: 0}
     - target: {fileID: 4773606264970132, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.0000006407499
+      value: 0.0000007525087
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.000014178453
+      value: 0.000003427267
       objectReference: {fileID: 0}
     - target: {fileID: 4794929815611460, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.000007353722
+      value: -0.000013690442
       objectReference: {fileID: 0}
     - target: {fileID: 1489697445649706, guid: 40fa1ffe94bee8945b844927dada42ff, type: 2}
       propertyPath: m_IsActive
