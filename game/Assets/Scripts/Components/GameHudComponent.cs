@@ -29,6 +29,7 @@ namespace DevGate
         public void Init(LevelComponent level, Lifetime lifetime)
         {
             level.State.SubscribeOnStateChanged(lifetime, UpdateLevelState);
+            UpdateLevelState(level.State);
         }
 
         private void UpdateLevelState(LevelState state)
