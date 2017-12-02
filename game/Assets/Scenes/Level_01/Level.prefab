@@ -339,7 +339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1583902314500570
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 114672275701877586}
   - component: {fileID: 114200782214899774}
   - component: {fileID: 114966717840430652}
+  - component: {fileID: 114563252333719482}
   m_Layer: 5
   m_Name: GameHud
   m_TagString: Untagged
@@ -554,7 +555,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640407857709602}
-  m_LocalRotation: {x: -0.00000031106168, y: 0.00000057369465, z: -0.96887314, w: 0.24755792}
+  m_LocalRotation: {x: 0.0000013262033, y: -0.000013080891, z: 0.055667866, w: -0.9984494}
   m_LocalPosition: {x: -1.2355222, y: -0.13635848, z: 0.33211255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -638,7 +639,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545446369203596}
-  m_LocalRotation: {x: 0.0000085905185, y: -0.000009927898, z: -0.16775124, w: 0.9858294}
+  m_LocalRotation: {x: 0.000010237097, y: -0.00000046496274, z: -0.010305158, w: 0.9999469}
   m_LocalPosition: {x: 1.2458278, y: -0.13635848, z: 0.33211255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -652,8 +653,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120740643741138}
   m_LocalRotation: {x: -0, y: 0.9945219, z: -0.10452846, w: 0}
-  m_LocalPosition: {x: 0, y: -1.7600023, z: 9.459993}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: -3.96, z: 17.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519572860269972}
   m_Father: {fileID: 4028800064243162}
@@ -994,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 4480392998869164}
-  Speed: 300
+  Speed: 600
 --- !u!114 &114016732089322218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 4693871094425604}
-  Speed: 300
+  Speed: 500
 --- !u!114 &114117676114068484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1266,6 +1267,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Left: {fileID: 4658202948834458}
   Right: {fileID: 4836446816051936}
+--- !u!114 &114563252333719482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583902314500570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdb053c6bad86a47976539b5a058d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114616926747686494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1395,8 +1407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73c289d3913a0e40971384cc8e6ed1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeTime: 0.2
-  ShakeOffset: {x: 0.2, y: 0.2, z: 0.2}
+  ShakeTime: 0
+  ShakeOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &114785365957667290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1507,10 +1519,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 4519572860269972}
   scalingMode: 1
-  randomSeed: 1113285374
+  randomSeed: -1958620848
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1662,8 +1674,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.025
+      scalar: 0.5
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1912,7 +1924,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.05
+      scalar: -0.15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4824,10 +4836,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 4519572860269972}
   scalingMode: 1
-  randomSeed: 1113285374
+  randomSeed: -970164999
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4979,8 +4991,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.025
+      scalar: 0.5
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5229,7 +5241,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.05
+      scalar: -0.15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
