@@ -23,6 +23,7 @@ namespace DevGate
         {
             OnAwake();
             _scoreText.text = GameContext.LevelController.Current.State.Score.ToString();
+            PlaySound("Audio/win");
         }
 
         private void Start()

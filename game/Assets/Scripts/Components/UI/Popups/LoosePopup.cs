@@ -18,6 +18,7 @@ namespace DevGate
         void Awake()
         {
             OnAwake();
+            PlaySound("Audio/loose");
         }
 
         private void Start()

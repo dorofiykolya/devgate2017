@@ -14,6 +14,11 @@ namespace DevGate
         [SerializeField]
         protected GameObject popupObject;
 
+        protected void PlaySound(string path)
+        {
+            var clip = Resources.Load<AudioClip>(path);
+            Sound.Play(clip);
+        }
 
         protected void OnAwake()
         {
