@@ -13,6 +13,7 @@ ModelImporter:
     100010: WaterPlants_MeshPart1
     100012: Pipes
     100014: Rays
+    100016: Grass
     400000: Bottom
     400002: //RootNode
     400004: SpawnPoints
@@ -21,30 +22,39 @@ ModelImporter:
     400010: WaterPlants_MeshPart1
     400012: Pipes
     400014: Rays
+    400016: Grass
     2300000: Bottom
     2300002: SpawnPoints
     2300004: WaterPlants_MeshPart0
     2300006: WaterPlants_MeshPart1
     2300008: Pipes
     2300010: Rays
+    2300012: Grass
     3300000: Bottom
     3300002: SpawnPoints
     3300004: WaterPlants_MeshPart0
     3300006: WaterPlants_MeshPart1
     3300008: Pipes
     3300010: Rays
+    3300012: Grass
     4300000: Bottom
     4300002: WaterPlants_MeshPart0
     4300004: WaterPlants_MeshPart1
     4300006: SpawnPoints
     4300008: Pipes
     4300010: Rays
+    4300012: Grass
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bottom
     second: {fileID: 2100000, guid: 93af255ad13ac8847b5d913f902fb850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: 35dafddae60082b48b1b80160a61005d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
