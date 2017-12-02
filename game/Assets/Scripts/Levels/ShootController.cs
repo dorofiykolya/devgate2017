@@ -30,14 +30,17 @@ namespace DevGate
                 var factory = new PoolFactory<BoatRocketComponent>(() => GameObject.Instantiate(rocket));
                 _factories.Add(factory);
             }
+
+            level.InputController.SubscribeOnShoot(GameContext.Lifetime, Shoot);
         }
 
         public void Shoot()
         {
             _lastShootLeft = !_lastShootLeft;
             Transform currentSpawn = _lastShootLeft ? _rightSpawn : _leftSpawn;
-
+           
             var bullet = _level.Settings.Rockets[0];
+            var bulletGo = GameObject.Instantiate(bullet.gameObject, currentSpawn);
         }
 
         public void ToPool(BoatRocketComponent component)

@@ -277,7 +277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1538792141281608
 GameObject:
   m_ObjectHideFlags: 1
@@ -398,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1923811973636070
 GameObject:
   m_ObjectHideFlags: 1
@@ -495,7 +495,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923811973636070}
-  m_LocalRotation: {x: 0.000000059604645, y: 0.000000009313226, z: 0.20429875, w: -0.9789086}
+  m_LocalRotation: {x: -0.00000038743013, y: 0.00000015646218, z: 0.067771755, w: -0.99770087}
   m_LocalPosition: {x: -1.2355222, y: -0.13635848, z: 0.33211255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -508,21 +508,21 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040336473389658}
-  m_LocalRotation: {x: 0, y: -0.9945219, z: 0.10452846, w: 0}
+  m_LocalRotation: {x: -0.010209269, y: -0.98976696, z: 0.104028694, w: -0.09713472}
   m_LocalPosition: {x: 0, y: 50, z: 180}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4028800064243162}
   m_Father: {fileID: 4888481572872198}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 12, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 12, y: -191.21, z: 0}
 --- !u!4 &4337785537669236
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020584646480912}
-  m_LocalRotation: {x: -0.000000022351742, y: 0.000000022351742, z: -0.8111868, w: -0.58478725}
+  m_LocalRotation: {x: -0.00000030174849, y: 0.00000031292436, z: -0.88388294, w: -0.46770826}
   m_LocalPosition: {x: 1.2458278, y: -0.13635848, z: 0.33211255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -584,7 +584,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.2249135, g: 0.35755473, b: 0.39215684, a: 1}
+  m_BackGroundColor: {r: 0.22833624, g: 0.328, b: 0.18811767, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

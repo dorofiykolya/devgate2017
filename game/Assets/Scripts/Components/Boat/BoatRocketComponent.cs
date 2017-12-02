@@ -8,6 +8,22 @@ namespace DevGate
 {
     public class BoatRocketComponent : MonoBehaviour
     {
+        float speed = 10;
+
+        void Awake()
+        {
+            GameContext.SubscribeOnUpdate(GameContext.Lifetime, OnUpdate);
+        }
+
+        private void Start()
+        {
+            transform.SetParent(null);
+        }
+
+        private void OnUpdate(float deltaTime)
+        {
+            transform.Translate( Vector3.back * speed * Time.deltaTime);
+        }
 
         public void OnTriggerEnter(Collider collider)
         {
