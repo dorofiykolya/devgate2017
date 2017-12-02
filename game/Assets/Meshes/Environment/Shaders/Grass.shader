@@ -47,7 +47,7 @@ Shader "Environment/Grass"
             {
                 float4 pos : SV_POSITION;
                 float4 uv : TEXCOORD0;
-                float2 data : TEXCOORD1;
+                float2 data : NORMAL;
                 float4 color : COLOR;
                 UNITY_FOG_COORDS(1)
             };
