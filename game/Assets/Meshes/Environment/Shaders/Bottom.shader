@@ -5,7 +5,11 @@ Shader "Environment/Bottom" {
     {
         [NoScaleOffset] _Tex01 ("Texture 01", 2D) = "white" {}
         [NoScaleOffset] _Tex02("Texture 02", 2D) = "white" {}
-        [NoScaleOffset] _Tex03 ("Texture 02", 2D) = "white" {}
+        [NoScaleOffset] _Tex03 ("Texture 03", 2D) = "white" {}
+        _Color_01 ("Color 01", Color) = (1, 1, 1, 1)
+        _Color_02 ("Color 02", Color) = (1, 1, 1, 1)
+        _Color_03 ("Color 03", Color) = (1, 1, 1, 1)
+        [NoScaleOffset] _Caustics ("Caustics", 2D) = "black" {}
     }
 
     SubShader 
@@ -22,9 +26,10 @@ Shader "Environment/Bottom" {
 
                 #include "UnityCG.cginc"
                 
-                sampler2D _Tex01; 
-                sampler2D _Tex02; 
-                sampler2D _Tex03; 
+                float4 _Color_01; 
+                float4 _Color_02;
+                float4 _Color_03;
+                sampler2D _Caustics;
 
                 struct VertexInput 
                 {
@@ -56,14 +61,23 @@ Shader "Environment/Bottom" {
                 
                 half4 frag(VertexOutput i) : COLOR 
                 {
-                    half4 tex01 = tex2D(_Tex01, i.uv.xy);
-                    half4 tex02 = tex2D(_Tex02, i.uv.xy);
-                    half4 tex03 = tex2D(_Tex03, i.uv.xy);
-                    
-                    float4 iter01 = lerp(tex01, tex02, i.color.r);
-                    float4 iter02 = lerp(iter01, tex03, i.color.g);
+                    /*
+                    half4 tex01 = tex2D(_Tex01, i.uv);
+                    half4 tex02 = tex2D(_Tex02, i.uv);
+                    half4 tex03 = tex2D(_Tex03, i.uv);
+                    */
 
-                    float4 final = iter02;
+                    half4 tex_01 = _Color_01;
+                    half4 tex_02 = _Color_02;
+                    half4 tex_03 = _Color_03;
+
+                    half4 caustics_01 = tex2D(_Caustics, 2 * i.uv + _Time.rr * .5);
+                    half4 caustics_02 = tex2D(_Caustics, 1 * i.uv - _Time.rr * .25);
+                    
+                    float4 iter01 = lerp(tex_01, tex_02, i.color.r);
+                    float4 iter02 = lerp(iter01, tex_03, i.color.g);
+
+                    float4 final = saturate(iter02 + (1 - i.color.r) * .5 * caustics_01 * caustics_02) * i.color.a;
                     UNITY_APPLY_FOG(i.fogCoord, final);
                     return final;
                 }
